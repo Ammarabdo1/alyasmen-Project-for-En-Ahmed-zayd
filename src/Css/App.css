@@ -1,0 +1,39 @@
+div {
+  color: #805E73 #87BCDE;
+  bg: #1F1F1F;
+  primary_text: #2b1c10;
+  secondary_text: #92553e;
+  secondary_bg: #874765;
+  primary_bg: #E1D4C1;
+  secondary_text: #f4e1d2;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Open Sans", Tahoma, Arial, Helvetica;
+  transition: all 0.5s ease;
+  transition: background-color 1s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+* ::-moz-selection {
+  background-color: rgba(238, 205, 149, 0.431372549);
+  color: white;
+  text-decoration: none;
+  border: none;
+}
+* ::selection {
+  background-color: rgba(238, 205, 149, 0.431372549);
+  color: white;
+  text-decoration: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html, body {
+  overflow-x: hidden;
+}/*# sourceMappingURL=App.css.map */
