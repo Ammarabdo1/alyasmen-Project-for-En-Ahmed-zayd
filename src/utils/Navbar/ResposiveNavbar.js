@@ -49,11 +49,11 @@ export default function TemporaryDrawer(props) {
     AOS.init();
   }, []);
 
-  const theme = useSelector((state) => state.theme)
-  const themeMode = useSelector((state) => state[theme])
-  const [colors, setColors] = useState(themeMode)
+  const theme = useSelector((state) => state.theme);
+  const themeMode = useSelector((state) => state[theme]);
+  const [colors, setColors] = useState(themeMode);
 
-  useEffect(() => setColors(themeMode) ,[useSelector((state) => state.theme)])
+  useEffect(() => setColors(themeMode), [useSelector((state) => state.theme)]);
 
   const dispatch = useDispatch();
   //!stats
@@ -122,14 +122,14 @@ export default function TemporaryDrawer(props) {
           )}
         </div>
       </div>
-      <Divider />
+      <Divider style={{ background: colors.text }} />
 
       {/* //TODO>> pages list */}
       <List style={{ color: colors.text }}>
         {/* Home */}
         <ListItem
           disablePadding
-          style={{ borderBottom: "1px solid #eecd9567" }}
+          style={{ borderBottom: `1px solid ${colors.border}` }}
         >
           <ListItemButton component={Link} to="/">
             <ListItemIcon>
@@ -144,7 +144,7 @@ export default function TemporaryDrawer(props) {
         {/* about */}
         <ListItem
           disablePadding
-          style={{ borderBottom: "1px solid #eecd9567" }}
+          style={{ borderBottom: `1px solid ${colors.border}` }}
         >
           <ListItemButton component={Link} to="/about">
             <ListItemIcon>
@@ -159,7 +159,7 @@ export default function TemporaryDrawer(props) {
         {/* works */}
         <ListItem
           disablePadding
-          style={{ borderBottom: "1px solid #eecd9567" }}
+          style={{ borderBottom: `1px solid ${colors.border}` }}
         >
           {" "}
           <ListItemButton component={Link} to="/projects">
@@ -190,7 +190,7 @@ export default function TemporaryDrawer(props) {
         {/* services */}
         <ListItem
           disablePadding
-          style={{ borderBottom: "1px solid #eecd9567" }}
+          style={{ borderBottom: `1px solid ${colors.border}` }}
         >
           <ListItemButton component={Link} to="/services">
             <ListItemIcon>
@@ -217,6 +217,7 @@ export default function TemporaryDrawer(props) {
     </Box>
   );
 
+  //! main component
   return (
     <div>
       {/*//? << main navbar >>  */}
@@ -225,61 +226,71 @@ export default function TemporaryDrawer(props) {
         style={{ width: "100%", overflow: "hidden", direction: "ltr" }}
         color={colors}
       >
-        <img
-          className="navbar-img"
-          src="images/icons/Logo.png"
-          alt="Logo"
-        />
+        <Link to="/">
+          <img className="navbar-img" src={`images/icons/Logo${colors.mode === 'dark' ? '' : 'WM'}.png`} alt="Logo" />
+        </Link>
 
         <div style={{ display: "flex", alignItems: "center" }}>
-          <Button onClick={toggleDrawer(true)}>
-            {!open && (
+          {!open && (
+            <Button onClick={toggleDrawer(true)}>
               <ReorderIcon
                 data-aos="flip-left"
                 data-aos-duration="400"
                 data-aos-delay="0"
                 className="list-icon"
               />
-            )}
-            {open && (
+            </Button>
+          )}
+
+          {open && (
+            <Button onClick={toggleDrawer(false)}>
               <ClearAllIcon
                 data-aos="flip-left"
                 data-aos-duration="400"
                 data-aos-delay="0"
                 className="list-icon"
               />
-            )}
-          </Button>
+            </Button>
+          )}
         </div>
 
-        <Drawer
-          anchor="left"
-          open={open}
-          onClose={toggleDrawer(false)}
-          style={{ direction: "rtl", width: "100px" }}
-        >
-          {DrawerList}
-          <WhatsContainer>
-            <Link target="_blank" to="https://wa.me/+201112644891">
-              <WhatsAppIcon className="whats-icon" />
-            </Link>
-            <Link
-              target="_blank"
-              to="https://www.facebook.com/people/Decor-Gate/61565983628977/?mibextid=qi2Omg&rdid=6YlbHMdOiKox9LKj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1222LzdtXPGTAdM5%2F%3Fmibextid%3Dqi2Omg"
-            >
-              <FaFacebook className="face-icon" />
-            </Link>
-            <Link
-              target="_blank"
-              to="https://www.instagram.com/decorgate1?igsh=MW4xMnlqdm9rdmNxeA=="
-            >
-              <img
-                src="images/icons/instagram.ico"
-                className="instagram-icon"
-              />
-            </Link>
-          </WhatsContainer>
-        </Drawer>
+        {open && (
+          <Drawer
+            anchor="left"
+            data-aos="fade-right"
+            data-aos-duration="400"
+            open={open}
+            onClose={toggleDrawer(false)}
+            transitionDuration={0}
+            style={{
+              direction: "rtl",
+              width: "100px",
+              background: "black",
+            }}
+          >
+            {DrawerList}
+            <WhatsContainer>
+              <Link target="_blank" to="https://wa.me/+201112644891">
+                <WhatsAppIcon className="whats-icon" />
+              </Link>
+              <Link
+                target="_blank"
+                to="https://www.facebook.com/people/Decor-Gate/61565983628977/?mibextid=qi2Omg&rdid=6YlbHMdOiKox9LKj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1222LzdtXPGTAdM5%2F%3Fmibextid%3Dqi2Omg"
+              >
+                <FaFacebook className="face-icon" />
+              </Link>
+              <Link
+                target="_blank"
+                to="https://www.instagram.com/decorgate1?igsh=MW4xMnlqdm9rdmNxeA=="
+              >
+                <img
+                  src="images/icons/instagram.ico"
+                  className="instagram-icon"
+                />
+              </Link>
+            </WhatsContainer>
+          </Drawer>
+        )}
       </NavbarContainer>
 
       {/* //TODO>> list links */}
@@ -293,7 +304,7 @@ const NavbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: ${(props) => (props.color.bg)};
+  background: ${(props) => props.color.bg};
   backdrop-filter: blur(10px);
   position: relative;
   top: 0;
@@ -302,10 +313,10 @@ const NavbarContainer = styled.div`
   box-shadow: 0px 0px 18px 7px
     ${(props) => (props.checkDarkMode ? "#E5E5E5" : "#000000de")};
 
-    img {
-      width: 80px;
-      margin-left: 10px;
-    }
+  img {
+    width: 80px;
+    margin-left: 10px;
+  }
 
   .list-icon {
     color: #eece95;

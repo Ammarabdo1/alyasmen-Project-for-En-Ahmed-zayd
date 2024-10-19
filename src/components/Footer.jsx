@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   FooterComponent,
   P1Description,
@@ -18,6 +18,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { FaFacebook } from "react-icons/fa";
 import LinkIcon from "@mui/icons-material/Link";
 
+import { useSelector } from "react-redux";
+
 // import "../Css/Footer.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -25,17 +27,25 @@ import "aos/dist/aos.css";
 const Footer = ({ checkDarkMode, checkSaudiFlag }) => {
   AOS.init();
   const isMobile = useMediaQuery('(max-width: 1000px)')
+
+  const theme = useSelector(state=> state.theme)
+  const themeMode = useSelector(state => state[theme])
+  const [colors, setColors] = useState(themeMode)
+
+  useEffect(()=>setColors(themeMode), [useSelector(state => state.theme)])
+
   return (
     <FooterComponent
       checkDarkMode={checkDarkMode}
       checkSaudiFlag={checkSaudiFlag}
+      color={colors}
     >
       <Grid container className="footer">
         <Grid md={12} sm={12} className="img-container">
           <div className="img-main" data-aos="fade-down" data-aos-duration="2000">
             <div className="img" data-aos="zoom-out" data-aos-duration="2000">
               <img
-                src="images/Footer.png"
+                src="images/icons/Logo.png"
                 alt="decorGate"
                 data-aos="fade-down"
                 data-aos-duration="2000"
@@ -46,13 +56,13 @@ const Footer = ({ checkDarkMode, checkSaudiFlag }) => {
         </Grid>
 
         <Grid
-          md={3}
+          md={4}
           sm={12}
           className="details"
           data-aos="zoom-out"
           data-aos-duration="1000"
         >
-          <P1Description checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} >
+          <P1Description color={colors} checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} >
             <Typography variant="subtitle1">
               <span className='header-description'>{checkSaudiFlag ? AR.des_title : USA.des_title}</span>,{" "}
               {checkSaudiFlag ? AR.des : USA.des},{" "}
@@ -62,7 +72,7 @@ const Footer = ({ checkDarkMode, checkSaudiFlag }) => {
         </Grid>
 
         <Grid md={3} sm={12} data-aos="zoom-out" data-aos-duration="1000">
-          <P2Links checkDarkMode={checkDarkMode}>
+          <P2Links color={colors} checkDarkMode={checkDarkMode}>
             <div className="pages">
               <Typography variant="h5">
                 {checkSaudiFlag ? AR.title : USA.title}{" "}
@@ -97,8 +107,8 @@ const Footer = ({ checkDarkMode, checkSaudiFlag }) => {
           </P2Links>
         </Grid>
 
-        <Grid md={3} sm={12} data-aos="zoom-out" data-aos-duration="1000">
-          <P3Media checkDarkMode={checkDarkMode}>
+        <Grid md={3} sm={12} xs={12} data-aos="zoom-out" data-aos-duration="1000">
+          <P3Media color={colors} checkDarkMode={checkDarkMode}>
             <div className="medias">
               <Typography variant="h5">
                 {checkSaudiFlag ? AR.media : USA.media}
@@ -116,8 +126,8 @@ const Footer = ({ checkDarkMode, checkSaudiFlag }) => {
           </P3Media>
         </Grid>
 
-        <Grid md={3} sm={12} data-aos={!isMobile && "zoom-out"} data-aos-duration="1000">
-          <P4Contact checkDarkMode={checkDarkMode}>
+        <Grid md={2} sm={12} xs={12} data-aos={!isMobile && "zoom-out"} data-aos-duration="1000">
+          <P4Contact color={colors} checkDarkMode={checkDarkMode}>
             <div>
               <Typography variant="h5">
                 {checkSaudiFlag ? AR.contact : USA.contact}
@@ -130,8 +140,8 @@ const Footer = ({ checkDarkMode, checkSaudiFlag }) => {
         </Grid>
 
         <Grid md={12} sm={12} className='copyright-container'>
-          <P5Copyright checkDarkMode={checkDarkMode}>
-            <CopyrightText checkDarkMode={checkDarkMode}>
+          <P5Copyright color={colors} checkDarkMode={checkDarkMode}>
+            <CopyrightText color={colors} checkDarkMode={checkDarkMode}>
               {checkSaudiFlag ? AR.copyright : USA.copyright}
             </CopyrightText>
           </P5Copyright>

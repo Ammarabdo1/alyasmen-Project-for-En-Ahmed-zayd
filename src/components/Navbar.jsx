@@ -31,7 +31,6 @@ const Navbar = (props) => {
   const themeMode = useSelector((state) => state[theme]);
   const [colors, setColors] = useState(themeMode);
   useEffect(() => setColors(themeMode), [useSelector((state) => state.theme)]);
-  console.log(colors.secondary_bg);
 
   AOS.init();
   //TODO>> check scroll

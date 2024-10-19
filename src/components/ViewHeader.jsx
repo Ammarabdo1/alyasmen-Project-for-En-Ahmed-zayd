@@ -89,7 +89,7 @@ const ViewHeader = ({checkDarkMode, checkSaudiFlag}) => {
           <Typography variant="h3">
           {checkSaudiFlag ? AR.title: USA.title}
           </Typography>
-          <Link to='' > <Button variant="contained" >{checkSaudiFlag ? AR.btn: USA.btn}<Forward5Icon className='icon' /> </Button> </Link>
+          <Link to='/contact' > <Button variant="contained" >{checkSaudiFlag ? AR.btn: USA.btn}<Forward5Icon className='icon' /> </Button> </Link>
         </header>
         
           <div className="flex fill center">

@@ -22,14 +22,17 @@ export const HeaderElement = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    h2 {
+     h2 {
+      font-size: 7rem;
       width: fit-content;
-      color: ${(props) => (props.checkDarkMode ? "#eece95" : "#003641")};
-      background: ${(props) => (props.checkDarkMode ? "" : "#EECE95")};
+      color: ${(props) => props.color.text};
+      background: ${(props) =>
+        props.checkDarkMode ? props.color.bg3 : props.color.bg3};
       backdrop-filter: blur(
-        ${(props) => (props.checkDarkMode ? "0px" : "100px")}
+        ${(props) => (props.checkDarkMode ? "1px" : "0px")}
       );
       padding: ${(props) => (props.checkDarkMode ? "0" : "0 10px")};
+      z-index: 2;
 
       ${(props) =>
         props.checkDarkMode && props.checkSaudiFlag
@@ -38,13 +41,14 @@ export const HeaderElement = styled.div`
 
       ${(props) =>
         props.checkDarkMode && props.checkSaudiFlag
-          ? "border-right: 3px solid #eece95"
-          : "border-left: 3px solid #eece95"};
+          ? `border-right: 3px solid ${props.color.text2}`
+          : `border-left: 3px solid ${props.color.text2}`};
 
       ${(props) =>
-        props.checkDarkMode ? "border-bottom: 3px solid #eece95" : "none"};
+        props.checkDarkMode
+          ? `border-bottom: 3px solid ${props.color.text2}`
+          : "none"};
     }
-  }
   &::after {
     content: "";
     transition: all 0.4s ease;
@@ -69,81 +73,52 @@ export const HeaderElement = styled.div`
         props.checkSaudiFlag
           ? `${props.checkDarkMode && "border-right: 2px solid"}`
           : `${props.checkDarkMode && "border-left: 2px solid"}`};
-      font-size: 2rem;
+      font-size: 4rem !important;
       ${(props) =>
         props.checkSaudiFlag
           ? `padding: ${
-              props.checkDarkMode ? "0 10px 1px 0 !important" : "0 3px"
+              props.checkDarkMode
+                ? "0 10px 1px 0 !important"
+                : "0 3px !important"
             }`
           : `padding: ${
-              props.checkDarkMode ? "0 0 1px 10px !important" : "0 3px"
+              props.checkDarkMode
+                ? "0 0 1px 10px !important"
+                : "0 3px !important"
             }`};
-      ${(props) => !props.checkSaudiFlag && `font-size: 1.8rem`};
+      ${(props) => !props.checkSaudiFlag && `font-size: 3.5rem !important`};
     }
   }
 `;
 
 export const BodyComponent = styled.div`
   padding: 100px;
-  background-image: radial-gradient(
-    ${(props) =>
-      props.checkDarkMode
-        ? "circle at center, #bcbcbc, #585858"
-        : "circle at center, white, #eecd95ae"}
-  );
+  background: ${props=> props.color.bg};
 
   h2 {
-    color: ${(props) => (props.checkDarkMode ? "#EECE95" : "#003641")};
+    color: ${(props) => props.color.text};
     margin-bottom: 60px;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
-      width: fit-content;
+    width: fit-content;
 
-      display: flex;
-      align-items: end;
-      justify-content: center;
-
+    display: flex;
+    align-items: end;
+    justify-content: center;
   }
 
   .contact-icon {
     font-size: 3.5rem;
-    ${props => props.checkSaudiFlag ? 'margin-right: 5px' : 'margin-left: 5px'} ;
-    ${props => !props.checkSaudiFlag && 'transform: rotateY(180deg)'} ;
+    ${(props) =>
+      props.checkSaudiFlag ? "margin-right: 5px" : "margin-left: 5px"};
+    ${(props) => !props.checkSaudiFlag && "transform: rotateY(180deg)"};
   }
 
   h6 {
-    color: #585858;
+    color: ${(props) => props.color.text2};
     width: 80%;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
   }
 
-  span {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-  }
-
-  p {
-    border-radius: 10px;
-    padding: 1px 5px;
-    background: ${(props) => (props.checkDarkMode ? "white" : "#585858")};
-    color: ${(props) => (props.checkDarkMode ? "#bf9752" : "white")};
-    margin-right: 10px;
-  }
-
-  button {
-    margin-top: 50px;
-    color: white;
-    padding: 7px;
-    border: none;
-    box-shadow: 0 0 12px 4px
-      ${(props) => (props.checkDarkMode ? "#5858585f" : "#000000a1")};
-    background: ${(props) => (props.checkDarkMode ? "#bf9752e0" : "#003641")};
-    transition: all 0.3s ease;
-    &:hover {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-  }
 
   .img-container {
     border-radius: 25px;
@@ -208,31 +183,6 @@ export const BodyComponent = styled.div`
         font-size: .8rem;
         margin-bottom: 20px;
         `}
-    }
-
-    span {
-      display: flex;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    p {
-      ${(props) =>
-        !props.checkSaudiFlag &&
-        `
-      margin-right: 0px;
-        font-size: .7rem;
-      `}
-    }
-
-    button {
-      margin-right: 36px;
-      ${(props) =>
-        !props.checkSaudiFlag &&
-        `
-      margin-right: 0px;
-      margin-left: 30px;
-      `}
     }
 
     .img-container {
@@ -311,14 +261,14 @@ export const ContactInfo = styled.div`
   }
 
   .info-icon {
-    color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+    color: ${(props) => (props.color.text2)};
     font-size: 2.3rem;
     ${(props) => props.checkClickInfo && "animation: jump 1s ease-in-out 1"};
-    ${props => props.checkSaudiFlag && 'transform: rotateY(180deg)'} ;
+    ${(props) => props.checkSaudiFlag && "transform: rotateY(180deg)"};
   }
 
   h6 {
-    color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+    color: ${(props) => (props.color.text2)};
     ${(props) => props.checkClickInfo && "animation: color 1s ease-out 1"};
   }
 
@@ -327,7 +277,8 @@ export const ContactInfo = styled.div`
     margin-bottom: 30px;
     .info-icon {
       font-size: 1.5rem;
-      margin: ${props => props.checkSaudiFlag ? '0 5px 0 20px' : '0 20px 0 5px'} ;
+      margin: ${(props) =>
+        props.checkSaudiFlag ? "0 5px 0 20px" : "0 20px 0 5px"};
     }
 
     h6 {

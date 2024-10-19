@@ -1,10 +1,10 @@
 const currentYear = new Date().getFullYear()
 
 export const AR = {
-  des_title: "بوابه الديكور للخدمات الهندسيه",
+  des_title: "الياسمين للأعمال الهندسية والتشطيبات والديكور",
   des:' تأسس مكتبنا استجابه للحاجة الملحوظه في سوق العمل للمهندسين ذوى الخبرة في مجال التصميم الداخلي والديكور ولذلك نحن متمسكون بأعلي معايير الاحتراف والصدق والتفاني في عملنا ونؤمن ان هذه القيم  تنعكس على تصميماتنا ذات الاسعار التنافسيه ',
   des2: "يلتزم مكتبنا بتزويد عملائنا بحلول تصميم داخلي مميزه مصممه خصيصا لتلبية احتياجاتهم وتفضيلاتهم الخاصة ",
-  title: "بوابة الديكور",
+  title: "الياسمين",
   links: [
     "الرئيسية",
     "من نحن",
@@ -16,14 +16,14 @@ export const AR = {
   media: "وسائل التواصل",
   contact: "تواصل معنا",
   email: "company@decorgate.com",
-  copyright:`  © حقوق النشر ${currentYear}. جميع الحقوق محفوظة. بوابه الديكور`,
+  copyright:`  © حقوق النشر ${currentYear}. جميع الحقوق محفوظة. `,
 };
 
 export const USA = {
-  des_title: "Decor Gate for Engineering Services",
+  des_title: "Al-Yasmine for engineering, finishing and decoration works",
   des: " Our office was established in response to the noticeable need in the labor market for engineers with experience in the field of interior design and decoration. Therefore, we adhere to the highest standards of professionalism, honesty and dedication in our work, and we believe that these values ​​are reflected in our designs with competitive prices",
   des2: " Our office is committed to providing our clients with distinctive interior design solutions tailored to meet their specific needs and preferences",
-  title: "Decor Gate",
+  title: "Al-Yasmine",
   links: [
     "Home",
     "About Us",

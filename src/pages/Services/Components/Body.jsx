@@ -12,7 +12,7 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-export default function Body({ checkDarkMode, checkSaudiFlag, serviceType, setSearchParams }) {
+export default function Body({ colors, checkDarkMode, checkSaudiFlag, serviceType, setSearchParams }) {
 
   const ServicesNumber = {
     outer: 0,
@@ -31,7 +31,7 @@ export default function Body({ checkDarkMode, checkSaudiFlag, serviceType, setSe
     area: 2,
     finish: 7,
     build: 6,
-    look: 12,
+    look: 9,
   }
 
   const [value, setValue] = React.useState(ServicesNumber[serviceType] || -1 );
@@ -41,7 +41,7 @@ export default function Body({ checkDarkMode, checkSaudiFlag, serviceType, setSe
   };
 
   return (
-    <BodyComponent serviceType={serviceType} checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} >
+    <BodyComponent color={colors} serviceType={serviceType} checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} >
       <Box className='services-container' >
         <Box sx={{ borderBottom: 2, borderColor: "divider" }}>
           <Tabs
@@ -62,7 +62,7 @@ export default function Body({ checkDarkMode, checkSaudiFlag, serviceType, setSe
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={ServicesNumber[serviceType]} >
-          <ServiceDetails checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} serviceType={serviceType} imageNumber={imagesNumber[serviceType]} />
+          <ServiceDetails color={colors} checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} serviceType={serviceType} imageNumber={imagesNumber[serviceType]} />
         </CustomTabPanel>
       </Box>
     </BodyComponent>

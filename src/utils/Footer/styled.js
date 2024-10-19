@@ -10,12 +10,7 @@ export const FooterComponent = styled.div`
       props.checkSaudiFlag ? "padding-right: 100px" : "padding-left: 100px"};
     position: relative;
     min-height: 70vh;
-    background-image: radial-gradient(
-      ${(props) =>
-        props.checkDarkMode
-          ? "circle at center, #bcbcbc, #585858"
-          : "circle at center, white, #eecd95ae"}
-    );
+    background: ${(props) => props.color.bg};
 
     .copyright-container {
       position: absolute;
@@ -38,16 +33,16 @@ export const FooterComponent = styled.div`
 
       @keyframes changeBg {
         0% {
-          background: #172f49;
+          background: ${(props) => props.color.bg4};
         }
 
         50% {
-          background: #e5e5e526;
+          background: ${(props) => props.color.bg3};
           transform: scale(1.1);
         }
 
         100% {
-          background: #172f49;
+          background: ${(props) => props.color.bg4};
         }
       }
 
@@ -58,25 +53,25 @@ export const FooterComponent = styled.div`
         margin-right: 30px;
 
         .rotate-img {
-          background: conic-gradient(
-            #172f49,
-            #254367,
-            #172f49,
-            #254367,
-            #172f49,
-            #254367,
-            #172f49,
-            #254367
+          ${(props) => `background: conic-gradient(
+            ${props.color.link1},
+            ${props.color.card},
+            ${props.color.link1},
+            ${props.color.card},
+            ${props.color.link1},
+            ${props.color.card},
+            ${props.color.link1},
+            ${props.color.card}
           );
           z-index: -1;
-          border-right: 5px solid silver;
-          border-left: 5px solid silver;
-          border-top: 5px solid gray;
-          border-bottom: 5px solid gray;
+          border-right: 5px solid ${props.color.text};
+          border-left: 5px solid ${props.color.text};
+          border-top: 5px solid ${props.color.bg1};
+          border-bottom: 5px solid ${props.color.bg1};
           width: 120px;
           height: 120px;
           animation: changeBgMain 20s linear infinite;
-          border-radius: 50%;
+          border-radius: 50%;`}
         }
 
         .img {
@@ -84,19 +79,22 @@ export const FooterComponent = styled.div`
           z-index: 1;
           top: 50%;
           left: 50%;
-          margin-top: -45px; /* Half of element's height */
-          margin-left: -45px;
+          margin-top: -50px; /* Half of element's height */
+          margin-left: -50px;
           display: flex;
           justify-content: center;
           padding: 5px;
           transition: all 1s ease;
-          width: 90px;
-          height: 90px;
-          box-shadow: 0 0 10px 3px #172f498e;
+          width: 100px;
+          height: 100px;
+          box-shadow: 0 0 10px 3px ${(props) => props.color.border};
           border-radius: 50%;
           animation: changeBg 7s ease-in-out infinite;
           img {
-            width: 100px;
+            margin-top: 15px;
+            margin-right: 10px;
+            width: 85px;
+            height: 70px;
           }
         }
       }
@@ -123,20 +121,19 @@ export const FooterComponent = styled.div`
 `;
 
 export const P1Description = styled.div`
-  width: ${(props) => props.checkSaudiFlag ? "70%" : "77%"};
+  width: ${(props) => (props.checkSaudiFlag ? "75%" : "88%")};
   h6 {
     margin-right: 30px;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
-    color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+    color: ${(props) => props.color.text2};
 
     .header-description {
-      color: ${(props) => (props.checkDarkMode ? "#EECE95" : "#003641")};
+      color: ${(props) => props.color.text};
       font-weight: 800;
     }
     .more-description {
-      ${(props) => !props.checkSaudiFlag && 'display: none'};
+      ${(props) => !props.checkSaudiFlag && "display: none"};
     }
-    
   }
 
   @media (max-width: 1000px) {
@@ -161,7 +158,7 @@ export const P2Links = styled.div`
     align-items: center;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
     font-size: 2rem;
-    color: ${(props) => (props.checkDarkMode ? "#EECE95" : "#003641")};
+    color: ${(props) => props.color.text};
     margin-bottom: 20px;
     .link-icon {
       font-size: 1.8rem;
@@ -172,7 +169,7 @@ export const P2Links = styled.div`
     text-decoration: none;
     h6 {
       font-family: "Open Sans", Tahoma, Arial, Helvetica;
-      color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+      color: ${(props) => props.color.text2};
       margin-bottom: 10px;
       font-weight: 800;
       transition: all 0.3s ease;
@@ -191,7 +188,7 @@ export const P3Media = styled.div`
   h5 {
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
     font-size: 2rem;
-    color: ${(props) => (props.checkDarkMode ? "#EECE95" : "#003641")};
+    color: ${(props) => props.color.text};
     margin-bottom: 20px;
   }
 
@@ -236,13 +233,13 @@ export const P4Contact = styled.div`
   h5 {
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
     font-size: 2rem;
-    color: ${(props) => (props.checkDarkMode ? "#EECE95" : "#003641")};
+    color: ${(props) => props.color.text};
     margin-bottom: 20px;
   }
 
   h6 {
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
-    color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+    color: ${(props) => props.color.text2};
   }
 
   @media (max-width: 1000px) {
@@ -258,23 +255,33 @@ export const P5Copyright = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: radial-gradient(
+  background: ${(props) => props.color.bg};
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
     ${(props) =>
-      props.checkDarkMode
-        ? "circle at center, #5858585f, #00000058, #00000058"
-        : "circle at center, #eecd95ae, #eecd95ae, #eecd95e0, #EECE95"}
-  );
+      `background: linear-gradient(to right, transparent 1px, ${props.color.bg4});`}
+  }
+
   @media (max-width: 1000px) {
-    height: 90px;
+    height: 85px;
   }
 `;
 
 export const CopyrightText = styled.h6`
   font-family: "Open Sans", Tahoma, Arial, Helvetica;
+  z-index: 2;
   font-size: 0.8rem;
   color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
   margin-bottom: 20px;
   @media (max-width: 1000px) {
+  font-size: 0.7rem;
     width: 90%;
     line-height: 25px;
   }

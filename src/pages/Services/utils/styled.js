@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import mainImg from "../Images/main.jpg";
-import internalImg from "../Images/internal.jpg";
+import internalImg from "../Images/1.jpg";
 import outerImg from "../Images/outer.jpg";
 import areaImg from "../Images/area.jpg";
 import buildImg from "../Images/build.jpg";
@@ -28,7 +28,7 @@ export const HeaderElement = styled.div`
   height: 50vh;
   background: url(${(props) => bgImgs[props.serviceType] || mainImg}) no-repeat;
   background-size: cover;
-  background-position: right 0px top  ${(props) => props.serviceType === 'outer' || props.serviceType === 'internal' ? '-300px' : '-500px'};
+  background-position: right 0px top  ${(props) => props.serviceType ?( props.serviceType === 'outer' || props.serviceType === 'internal' ? '-300px' : '-500px'):'0px'};
   z-index: 2;
   position: relative;
   
@@ -39,13 +39,16 @@ export const HeaderElement = styled.div`
     justify-content: center;
     align-items: center;
     h2 {
+      font-size: 7rem;
       width: fit-content;
-      color: ${(props) => (props.checkDarkMode ? "#eece95" : "#003641")};
-      background: ${(props) => (props.checkDarkMode ? "" : "#EECE95")};
+      color: ${(props) => props.color.text};
+      background: ${(props) =>
+        props.checkDarkMode ? "transparent" : props.color.bg3};
       backdrop-filter: blur(
-        ${(props) => (props.checkDarkMode ? "0px" : "100px")}
+        ${(props) => (props.checkDarkMode ? "1px" : "0px")}
       );
       padding: ${(props) => (props.checkDarkMode ? "0" : "0 10px")};
+      z-index: 2;
 
       ${(props) =>
         props.checkDarkMode && props.checkSaudiFlag
@@ -54,11 +57,13 @@ export const HeaderElement = styled.div`
 
       ${(props) =>
         props.checkDarkMode && props.checkSaudiFlag
-          ? "border-right: 3px solid #eece95"
-          : "border-left: 3px solid #eece95"};
+          ? `border-right: 3px solid ${props.color.text2}`
+          : `border-left: 3px solid ${props.color.text2}`};
 
       ${(props) =>
-        props.checkDarkMode ? "border-bottom: 3px solid #eece95" : "none"};
+        props.checkDarkMode
+          ? `border-bottom: 3px solid ${props.color.text2}`
+          : "none"};
     }
   }
   &::after {
@@ -80,7 +85,7 @@ export const HeaderElement = styled.div`
     background: url(${(props) => bgImgs[props.serviceType] || mainImg})
       no-repeat;
     background-size: cover;
-    background-position: start;
+    background-position: center;
     ${(props) =>
       (!props.serviceType ||
         props.serviceType === "look" ||
@@ -92,27 +97,26 @@ export const HeaderElement = styled.div`
         props.checkSaudiFlag
           ? `${props.checkDarkMode && "border-right: 2px solid"}`
           : `${props.checkDarkMode && "border-left: 2px solid"}`};
-      font-size: 2rem;
+      font-size: 4.5rem !important;
       ${(props) =>
         props.checkSaudiFlag
           ? `padding: ${
-              props.checkDarkMode ? "0 10px 1px 0 !important" : "0 3px"
+              props.checkDarkMode
+                ? "0 10px 1px 0 !important"
+                : "0 3px !important"
             }`
           : `padding: ${
-              props.checkDarkMode ? "0 0 1px 10px !important" : "0 3px"
+              props.checkDarkMode
+                ? "0 0 1px 10px !important"
+                : "0 3px !important"
             }`};
-      ${(props) => !props.checkSaudiFlag && `font-size: 1.8rem`};
+      ${(props) => !props.checkSaudiFlag && `font-size: 3.5rem !important`};
     }
   }
 `;
 
 export const BodyComponent = styled.div`
-  background-image: radial-gradient(
-    ${(props) =>
-      props.checkDarkMode
-        ? "circle at center, #bcbcbc, #585858"
-        : "circle at center, white, #eecd95ae"}
-  );
+  background: ${props=> props.color.bg};
 
   .services-container {
     width: 100%;
@@ -126,21 +130,21 @@ export const BodyComponent = styled.div`
   }
 
   h2 {
-    color: ${(props) => (props.checkDarkMode ? "#EECE95" : "#003641")};
+    color: ${(props) => (props.color.text)};
     margin-bottom: 30px;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
   }
 
   h6 {
-    color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+    color: ${(props) => (props.color.text2)};
     width: 80%;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
   }
 
   .MuiTabs-indicator {
-    background: ${(props) => (props.checkDarkMode ? "#EECE95" : "#eecd95e0")};
+    background: ${(props) => (props.color.text)};
     box-shadow: 0 0 12px 4px
-      ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#eecd95e0")};
+      ${(props) => (props.color.text2)};
   }
 
   .all-items {
@@ -149,8 +153,9 @@ export const BodyComponent = styled.div`
       margin-left: 20px;
       color: white;
       box-shadow: 0 0 12px 4px
-        ${(props) => (props.checkDarkMode ? "#e5e5e554" : "#000000a1")};
-      color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#003641")};
+        ${(props) => (props.color.border)};
+      color:  ${(props) => (props.color.text)};
+      font-weight: 600;
     }
   }
 

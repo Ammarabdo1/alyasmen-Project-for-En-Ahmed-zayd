@@ -1,16 +1,26 @@
 import styled from "styled-components";
+import bgImgD from './images/dark2.jpg'
+import bgImgL from './images/light.jpg'
+import bgImgCD from './images/dark.jpg'
+import bgImgCL from './images/light2.jpg'
 
 export const ServicesContainer = styled.div`
   min-height: 100vh;
   padding: 100px 0;
-  background-image: radial-gradient(
-    ${(props) =>
-      props.checkDarkMode
-        ? "circle at center, #bcbcbc, #585858"
-        : "circle at center, white, #eecd95ae"}
-  );
-
-  // background: ${(props) => (props.checkDarkMode ? "gray" : "#eecd95ae")};
+  background: ${(props) => props.color.bg};
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 95%;
+    height: 1%;
+    box-shadow: 0 10px 15px 10px ${(props) => props.color.bg1};
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+  }
 
   .container {
     width: 100%;
@@ -27,7 +37,6 @@ export const ServicesContainer = styled.div`
   }
 
   h6 {
-    color: #003641;
     width: 50%;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
   }
@@ -49,24 +58,43 @@ export const ServicesContainer = styled.div`
       height: 230px;
     }
   }
+
+  @media (max-width: 1000px) {
+    .service {
+      height: 70vh;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 95%;
+      height: 7px;
+      box-shadow: 0 10px 15px 10px ${(props) => props.color.bg1};
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+    }
+  }
 `;
 
 export const HeaderText = styled.header`
-  padding: 20px;
-  box-shadow: 0 0 10px 4px
-    ${(props) => (props.checkDarkMode ? "#eece95" : "#5858585f")};
-  border-radius: 50%;
-  width: 300px;
-  height: 220px;
+  padding: 10px 20px;
+  box-shadow: 0 0 10px 3px ${(props) => props.color.text2};
+  border-radius: 30px;
+  width: 450px;
+  height: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .main-text {
+    transform: rotateY(15deg);
     transition: background-color 0.5s ease, color 0.5s ease;
-    font-size: 5rem;
-    ${(props) => !props.checkSaudiFlag && "font-size: 4rem;"}
-    color: ${(props) => (props.checkDarkMode ? "#eece95" : "#003641")};
+    font-size: 7rem;
+    ${(props) => !props.checkSaudiFlag && "font-size: 5rem;"}
+    ${(props) => !props.checkSaudiFlag && "letter-spacing: 2px;"}
+    color: ${(props) => props.color.text};
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
     text-align: center;
     line-height: 70px;
@@ -76,8 +104,9 @@ export const HeaderText = styled.header`
   }
   @media (max-width: 1000px) {
     padding: 10px;
-    width: 230px;
-    height: 140px;
+    width: 100%;
+    height: 100px;
+    border-radius: 0;
     .main-text {
       line-height: 55px;
       font-size: ${(props) => (props.checkSaudiFlag ? "3.5rem" : "3rem")};
@@ -109,68 +138,30 @@ export const Card = styled.div`
 
   .front {
     ${(props) => !props.checkSaudiFlag && "transform: rotate(180deg);"}
-
     padding: 30px 15px;
-
-    ${(props) =>
-      props.type === "contactUs"
-        ? props.checkDarkMode
-          ? `background-image: conic-gradient(
-      from 45deg,
-      #172F49 0%,
-      #172F49 50%,
-      #e5e5e5 25%,
-      #5858585f 50%,
-      #e5e5e5 60%,
-      #e5e5e554 75%,
-      #e5e5e5 100%
-    );`
-          : `
-    background-image: conic-gradient(
-      from 45deg,
-      #172F49 0%,
-      #172F49 50%,
-      #585858 25%,
-      #5858585f 50%,
-      #585858 60%,
-      #5858585f 75%,
-      #585858 100%
-    );
-    `
-        : props.checkDarkMode
-        ? `background-image: conic-gradient(
-      from 45deg,
-      silver 0%,
-      silver 25%,
-      #eece95 25%,
-      #5858585f 50%,
-      #e5e5e5 60%,
-      #5858585f 75%,
-      #eece95 100%
-    );`
-        : `
-    background-image: conic-gradient(
-      from 45deg,
-      gray 0%,
-      gray 25%,
-      #585858 25%,
-      #5858585f 50%,
-      #585858 60%,
-      #5858585f 75%,
-      #585858 100%
-    );
-    `}
-    // background-image: repeating-linear-gradient(45deg, black, black 10px, white 10px, white 20px);
-    // background-image: conic-gradient(from 90deg, red 0%, yellow 25%, green 50%, blue 100%);
-    // 50% T bottom
-    // 75% T top
+    background: url(${props => props.checkDarkMode ? bgImgD : bgImgL });
+    ${props => props.type == 'contactUs' && `background: url(${props.checkDarkMode ? bgImgCD : bgImgCL} );`}
+    background-size: cover;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+${props => props.checkDarkMode && `background: linear-gradient(to bottom, transparent 100px, ${props.color.border});`}
+    }
+    
     h5 {
-      color: ${(props) => (props.checkDarkMode ? "#E5E5E5" : "#E5E5E5")};
+      z-index: 2;
+      color: ${(props) => props.color.text2};
       ${(props) => !props.checkSaudiFlag && "transform: rotate(180deg);"}
       width: 50%;
       font-family: "Open Sans", Tahoma, Arial, Helvetica;
     }
     img {
+      z-index: 2;
       width: 80px;
       position: absolute;
       top: 70px;
@@ -195,15 +186,20 @@ export const Card = styled.div`
     }
 
     @media (max-width: 1000px) {
+
+    align-items: start;
+        
+
       h5 {
-        width: 50%;
+        width: 73%;
         font-size: ${(props) => (props.checkSaudiFlag ? " 1.2rem" : "1rem")};
         font-weight: 700;
       }
       img {
-        width: 60px;
+        width: 100px;
         ${(props) => (props.checkSaudiFlag ? "left: 15px;" : "right: 15px;")}
-        top: 70px;
+        top: 280px;
+        left: 20px;
       }
       video {
         width: 40px;
@@ -240,7 +236,7 @@ export const Card = styled.div`
       z-index: -1;
     }
     h5 {
-      color: ${(props) => (props.checkDarkMode ? "white" : "#003641")};
+      color: ${(props) => props.color.text2};
       ${(props) => !props.checkDarkMode && "backdrop-filter: blur(10px);"};
       ${(props) => !props.checkDarkMode && "background: #e5e5e571;"};
       ${(props) => !props.checkDarkMode && "padding: 2px;"};
@@ -252,8 +248,9 @@ export const Card = styled.div`
     }
 
     h6 {
-      color: ${(props) => (props.checkDarkMode ? "#ebc481" : "#e5e5e5")};
-      backdrop-filter: ${(props) => (props.checkDarkMode ? "blur(3px)" : "blur(20px)")};
+      color: ${(props) => props.color.text1};
+      backdrop-filter: ${(props) =>
+        props.checkDarkMode ? "blur(3px)" : "blur(20px)"};
       font-weight: 800;
       font-family: "Open Sans", Tahoma, Arial, Helvetica;
       margin: 10px;
@@ -261,18 +258,21 @@ export const Card = styled.div`
     }
 
     button {
-      background: ${(props) =>
-        props.checkDarkMode ? "#bf9752e0" : "#003641e4"};
+      font-size: 1rem;
+      font-weight: 800;
+      background: ${(props) => props.color.text2};
+      color: ${(props) => props.color.bg};
+      box-shadow: 0 0 8px 2px ${(props) => props.color.text2};
     }
 
     @media (max-width: 1000px) {
-
       h5 {
         font-size: 1.4rem;
+        font-weight: 900;
       }
 
       h6 {
-        font-size: ${props => props.checkSaudiFlag ? '.7rem' : '.6rem'} ;
+        font-size: ${(props) => (props.checkSaudiFlag ? "1rem" : "1rem")};
       }
     }
   }

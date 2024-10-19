@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
-import {useMediaQuery} from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
+import { useMediaQuery, Button } from "@mui/material";
 
 import {
   BackGroundColorContainer,
@@ -10,6 +12,7 @@ import {
   TopImages,
   MiddleImages,
   BottomImages,
+  GoDownButton,
 } from "../utils/styled";
 import { AR, USA } from "../utils/translation";
 
@@ -33,12 +36,16 @@ const url = (name, wrap = false) =>
     wrap ? ")" : ""
   }`;
 
-export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
+export default function ProjectsImages({
+  colors,
+  checkSaudiFlag,
+  checkDarkMode,
+}) {
   const isMobile = useMediaQuery("(max-width: 1000px)");
 
   const parallax = useRef(null);
   return (
-    <ProjectsComponent checkDarkMode={checkDarkMode}>
+    <ProjectsComponent color={colors} checkDarkMode={checkDarkMode}>
       {isMobile ? (
         <div className="all-projects">
           <Parallax ref={parallax} pages={5}>
@@ -46,6 +53,7 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
             <TextContainer
               checkSaudiFlag={checkSaudiFlag}
               checkDarkMode={checkDarkMode}
+              color={colors}
             >
               <ParallaxLayer
                 offset={0.05}
@@ -74,13 +82,16 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
               </ParallaxLayer>
             </TextContainer>
 
-            <BackGroundColorContainer checkDarkMode={checkDarkMode}>
+            <BackGroundColorContainer
+              color={colors}
+              checkDarkMode={checkDarkMode}
+            >
               <ParallaxLayer offset={2} speed={1} className="bg-p1" />
               <ParallaxLayer offset={4} speed={1} className="bg-p2" />
             </BackGroundColorContainer>
 
             {/*//! 1 Top */}
-            <TopImages>
+            <TopImages color={colors}>
               <ParallaxLayer
                 offset={1.1}
                 speed={0.3}
@@ -115,7 +126,6 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
               >
                 <img src="images/real-projects/sw2.jpg" />
                 <img src="images/real-projects/sw4.jpg" />
-
               </ParallaxLayer>
 
               <ParallaxLayer
@@ -123,11 +133,9 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
                 speed={0.2}
                 className="images-container"
               >
-
                 <img src="images/real-projects/sw5.jpg" />
                 <img src="images/real-projects/sw8.jpg" />
               </ParallaxLayer>
-
             </TopImages>
 
             {/*//! starts */}
@@ -164,9 +172,13 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
             </div>
 
             {/*//! 2 Middle */}
-            <MiddleImages checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} >
+            <MiddleImages
+              color={colors}
+              checkDarkMode={checkDarkMode}
+              checkSaudiFlag={checkSaudiFlag}
+            >
               {/*//! Right */}
-              <ParallaxLayer offset={.8} speed={-0.1} className="right">
+              <ParallaxLayer offset={0.8} speed={-0.1} className="right">
                 <img src="images/real-projects/t1.jpg" />
 
                 <img src="images/real-projects/t2.jpg" />
@@ -180,13 +192,12 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
               </ParallaxLayer>
 
               {/*//! middle */}
-              <ParallaxLayer offset={.8} speed={0.2} className="middle">
+              <ParallaxLayer offset={0.8} speed={0.2} className="middle">
                 <img src="images/real-projects/w5.jpg" />
               </ParallaxLayer>
 
               {/*//! bottom */}
               <div className="bottom">
-
                 {/*//* middle */}
                 <ParallaxLayer offset={2} speed={-0} className="middle">
                   <div className="hover-img">
@@ -205,7 +216,7 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
               </div>
 
               {/*//! left */}
-              <ParallaxLayer offset={.8} speed={-0.1} className="left">
+              <ParallaxLayer offset={0.8} speed={-0.1} className="left">
                 <img src="images/real-projects/t4.jpg" />
 
                 <img src="images/real-projects/t5.jpg" />
@@ -315,13 +326,17 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
             </div>
 
             {/*//! 3 Bottom */}
-            <BottomImages>
+            <BottomImages color={colors}>
               <ParallaxLayer offset={2.4} speed={0.2} className="bottom-images">
                 <img src="images/real-projects/3.jpg" />
                 <img src="images/real-projects/4.jpg" />
               </ParallaxLayer>
 
-              <ParallaxLayer offset={2.65} speed={0.2} className="bottom-images">
+              <ParallaxLayer
+                offset={2.65}
+                speed={0.2}
+                className="bottom-images"
+              >
                 <img src="images/real-projects/5.jpg" />
                 <img src="images/real-projects/6.jpg" />
               </ParallaxLayer>
@@ -334,26 +349,43 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
               <ParallaxLayer offset={3.2} speed={0.2} className="bottom-images">
                 <img src="images/real-projects/9.jpg" />
                 <img src="images/real-projects/11.jpg" />
-
               </ParallaxLayer>
 
-              <ParallaxLayer offset={3.45} speed={0.2} className="bottom-images">
+              <ParallaxLayer
+                offset={3.45}
+                speed={0.2}
+                className="bottom-images"
+              >
                 <img src="images/real-projects/13.jpg" />
                 <img src="images/real-projects/17.jpg" />
-
               </ParallaxLayer>
 
               <ParallaxLayer offset={3.7} speed={0.2} className="bottom-images">
                 <img src="images/real-projects/18.jpg" />
                 <img src="images/real-projects/19.jpg" />
-
               </ParallaxLayer>
 
-              <ParallaxLayer offset={3.95} speed={0.2} className="bottom-images">
+              <ParallaxLayer
+                offset={3.95}
+                speed={0.2}
+                className="bottom-images"
+              >
                 <img src="images/real-projects/20.jpg" />
                 <img src="images/real-projects/21.jpg" />
-
               </ParallaxLayer>
+              <GoDownButton color={colors}>
+                  <Button
+                    variant="contained"
+                    onClick={() =>
+                      window.scrollTo({
+                        top: window.scrollY + window.innerHeight + 100,
+                        behavior: "smooth",
+                      })
+                    }
+                  >
+                    <KeyboardArrowDownIcon className="icon" />
+                  </Button>
+              </GoDownButton>
             </BottomImages>
           </Parallax>
         </div>
@@ -364,6 +396,7 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
             <TextContainer
               checkSaudiFlag={checkSaudiFlag}
               checkDarkMode={checkDarkMode}
+              color={colors}
             >
               <ParallaxLayer
                 offset={0.05}
@@ -392,13 +425,16 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
               </ParallaxLayer>
             </TextContainer>
 
-            <BackGroundColorContainer checkDarkMode={checkDarkMode}>
+            <BackGroundColorContainer
+              color={colors}
+              checkDarkMode={checkDarkMode}
+            >
               <ParallaxLayer offset={2} speed={1} className="bg-p1" />
               <ParallaxLayer offset={4} speed={1} className="bg-p2" />
             </BackGroundColorContainer>
 
             {/*//! 1 Top */}
-            <TopImages>
+            <TopImages color={colors}>
               <ParallaxLayer
                 offset={0}
                 speed={0.3}
@@ -457,7 +493,7 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
             </div>
 
             {/*//! 2 Middle */}
-            <MiddleImages checkDarkMode={checkDarkMode}>
+            <MiddleImages color={colors} checkDarkMode={checkDarkMode}>
               {/*//! Right */}
               <ParallaxLayer offset={1} speed={-0.1} className="right">
                 <img src="images/real-projects/t1.jpg" />
@@ -479,7 +515,6 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
 
               {/*//! bottom */}
               <div className="bottom">
-
                 {/*//* middle */}
                 <ParallaxLayer offset={2.6} speed={-0} className="middle">
                   <div className="hover-img">
@@ -608,7 +643,7 @@ export default function ProjectsImages({ checkSaudiFlag, checkDarkMode }) {
             </div>
 
             {/*//! 3 Bottom */}
-            <BottomImages>
+            <BottomImages color={colors}>
               <ParallaxLayer offset={3.2} speed={0.2} className="bottom-images">
                 <img src="images/real-projects/3.jpg" />
                 <img src="images/real-projects/4.jpg" />

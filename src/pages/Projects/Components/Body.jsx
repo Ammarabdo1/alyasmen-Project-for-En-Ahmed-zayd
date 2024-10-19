@@ -4,7 +4,7 @@ import { ProjectsContainer } from "../utils/styled";
 import { AR, USA } from "../utils/translation";
 
 //! mui component
-import { Typography, Grid, Button } from "@mui/material";
+import { Typography, Grid, Button, colors } from "@mui/material";
 
 //! mui icons
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
@@ -22,13 +22,11 @@ const Body = (props) => {
     AOS.init();
   }, []);
   return (
-    <div
-      checkSaudiFlag={props.checkSaudiFlag}
-      checkDarkMode={props.checkDarkMode}
-    >
+    <div>
       <ProjectsImages
         checkSaudiFlag={props.checkSaudiFlag}
         checkDarkMode={props.checkDarkMode}
+        colors={props.colors}
         className='body-container'
       />
     </div>

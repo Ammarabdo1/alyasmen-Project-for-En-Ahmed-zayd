@@ -4,6 +4,8 @@ import ContactComponent from "../utils/constact/component";
 import { animated, useSpring, easings } from "@react-spring/web";
 import { useMediaQuery } from "@mui/material";
 
+import { useSelector } from "react-redux";
+
 export default function ContactUs({ checkDarkMode, checkSaudiFlag }) {
   const [selectField, setSelectField] = useState(false);
   const [noneSelectField, setNoneSelectField] = useState(true);
@@ -37,6 +39,12 @@ export default function ContactUs({ checkDarkMode, checkSaudiFlag }) {
     }
   };
 
+  const theme = useSelector(state => state.theme) 
+  const themeMode = useSelector(state => state[theme])
+  const [colors, setColors] = useState(themeMode)
+
+  useEffect(() => setColors(themeMode) ,[useSelector(state=> state.theme)])
+
   useEffect(() => {
     window.addEventListener("scroll", handleChangeMotionOfFrom);
 
@@ -45,7 +53,7 @@ export default function ContactUs({ checkDarkMode, checkSaudiFlag }) {
 
   return (
     <ContactUsContainer>
-      <ContactUsElement checkDarkMode={checkDarkMode}>
+      <ContactUsElement checkDarkMode={checkDarkMode} color={colors} >
         <animated.div
           style={{
             x: value.to({
@@ -92,6 +100,7 @@ export default function ContactUs({ checkDarkMode, checkSaudiFlag }) {
           setNoneSelectField={setNoneSelectField}
           onFocusField = {onFocusField}
           setOnFocusField = {setOnFocusField}
+          colors={colors}
         />
       </ContactUsElement>
     </ContactUsContainer>

@@ -12,14 +12,14 @@ export const NavbarContainer = styled.div`
     props.checkScroll &&
     `
     background: ${props.color.bg};
-    box-shadow: 0px 0px 18px 8px ${props.color.bg};
+    box-shadow: 0px 0px 18px 8px ${props.color.text2};
     `}
 `;
 
 export const NavbarList = styled.ol`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 8vh;
   justify-content: space-around;
   height: 100px;
   align-items: center;
@@ -27,9 +27,9 @@ export const NavbarList = styled.ol`
 `;
 
 export const NavbarLogo = styled.div`
-  height: 100%;
-  display: flex;
-  algin-items: start;
+  position: fixed;
+  right: 10px;
+  top: 0;
   img {
     margin-top: 5px;
     width: 100px;
@@ -38,6 +38,11 @@ export const NavbarLogo = styled.div`
 
 export const NavbarLinks = styled.div`
   display: flex;
+  height: 8vh;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  justify-content: center;
   li {
     a.link1 {
       margin: 0 3vw;
@@ -54,7 +59,7 @@ export const NavbarLinks = styled.div`
         `}
       &:before {
         content: "";
-        background: $default-color;
+        background: ${(props) => props.color.text};
         display: block;
         position: absolute;
         bottom: -3px;
@@ -72,7 +77,7 @@ export const NavbarLinks = styled.div`
         to right,
         ${props.color.bg2},
         ${props.color.text2} 50%,
-        ${props.color.text} 50%
+        ${props.color.text2} 50%
       );
       background-size: 200% 100%;
       background-position: -100%;
@@ -117,4 +122,9 @@ export const NavbarLinks = styled.div`
 
 export const NavbarActions = styled.div`
   display: flex;
+  height: 8vh;
+  align-items: center;
+  position: fixed;
+  left: 10px;
+  top: 0;
 `;

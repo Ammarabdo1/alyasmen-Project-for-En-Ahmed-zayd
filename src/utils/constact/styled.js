@@ -13,12 +13,7 @@ export const ContactUsContainer = styled.div`
 export const ContactUsElement = styled.div`
   min-height: 100vh;
   padding-top: 100px;
-  background-image: radial-gradient(
-    ${(props) =>
-      props.checkDarkMode
-        ? "circle at center, #bcbcbc, #585858"
-        : "circle at center, white, #eecd95ae"}
-  );
+  background: ${(props) => props.color.bg};
   .animation {
     opacity: 0.1;
     inset: -200%;
@@ -39,31 +34,34 @@ export const TextComponent = styled.div`
   margin-bottom: 50px;
   .text {
     h6 {
-      color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+      ${(props) => `
+      
+      color: ${props.color.text2};
       margin-bottom: 20px;
       font-family: "Cairo", sans-serif;
       border-left: 5px solid
-        ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+        ${props.color.text2};
       border-right: 5px solid
-        ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+        ${props.color.text2};
       border-top: 1px solid
-        ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+        ${props.color.text2};
       border-bottom: 1px solid
-        ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+        ${props.color.text2};
       box-shadow: 0 0 10px 2px
-        ${(props) => (props.checkDarkMode ? "#EECE95" : "#585858")};
+        ${props.color.text2};
       border-radius: 10px;
       outline: 1px solid
-        ${(props) => (props.checkDarkMode ? "white" : "#585858")};
+        ${props.color.text2};
       outline-offset: 5px;
       width: fit-content;
       padding: 0 5px;
+      `}
     }
 
     h3 {
-      color: ${(props) => (props.checkDarkMode ? "#EECE95" : "#003641")};
+      color: ${(props) => props.color.text};
       span {
-        color: ${(props) => (props.checkDarkMode ? "#ebc481" : "#254367")};
+        color: ${(props) => props.color.text2};
       }
     }
 
@@ -74,7 +72,7 @@ export const TextComponent = styled.div`
 
     h5 {
       width: 300px;
-      color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+      color: ${(props) => props.color.text};
       font-family: "Cairo", sans-serif;
       margin-top: 15px;
       padding-top: 8px;
@@ -139,7 +137,7 @@ export const FromComponent = styled.div`
           width: 10px;
           height: 10px;
           box-shadow: 0 0 10px 3px
-            ${(props) => (props.checkDarkMode ? "#EECE95" : "#585858")};
+            ${(props) => props.color.text2};
         }
         50% {
           padding: 10px;
@@ -148,7 +146,7 @@ export const FromComponent = styled.div`
           height: 10px;
           transform: rotate(50deg);
           box-shadow: 0 0 10px 3px
-            ${(props) => (props.checkDarkMode ? "#585858" : "#ebc481")};
+            ${(props) => props.color.bg2};
         }
         100% {
           padding: 10px;
@@ -156,7 +154,7 @@ export const FromComponent = styled.div`
           height: 10px;
           transform: rotate(40deg);
           box-shadow: 0 0 10px 3px
-            ${(props) => (props.checkDarkMode ? "#EECE95" : "#585858")};
+            ${(props) => props.color.text2};
         }
       }
 
@@ -172,7 +170,7 @@ export const FromComponent = styled.div`
           padding: 10px;
           width: 10px;
           height: 10px;
-          transform: rotate(35deg);
+          transform: rotate(40deg);
         }
       }
 
@@ -200,7 +198,7 @@ export const FromComponent = styled.div`
       border-radius: 15px;
       background-color: #ffffff1b;
       box-shadow: 0 0 10px 3px
-        ${(props) => (props.checkDarkMode ? "#EECE95" : "#585858")};
+        ${(props) => props.color.text2};
       -webkit-backdrop-filter: blur(20px);
       backdrop-filter: blur(20px);
 
@@ -212,10 +210,8 @@ export const FromComponent = styled.div`
         border-radius: 15px;
         // background-color: #ffffff1b;
         box-shadow: 0 0 10px 1px
-          ${(props) => (props.checkDarkMode ? "#EECE95" : "#585858")};
+          ${(props) => props.color.text2};
         padding: 20px;
-        // -webkit-backdrop-filter: blur(20px);
-        // backdrop-filter: blur(20px);
 
         .name-phone-fields {
           display: flex !important;
@@ -232,9 +228,10 @@ export const FromComponent = styled.div`
         }
 
         .submit {
-          color: white;
-          background: ${(props) =>
-            props.checkDarkMode ? "#ebc481" : "#003641"}
+          color: ${(props) => props.color.bg};
+          font-size: 1rem;
+      font-weight: 800;
+          background: ${(props) => props.color.text2};
         }
 
         .card {
@@ -266,7 +263,7 @@ export const FromComponent = styled.div`
           width: 10px;
           height: 10px;
           box-shadow: 0 0 10px 3px
-            ${(props) => (props.checkDarkMode ? "#EECE95" : "#585858")};
+            ${(props) => props.color.text2};
         }
         50% {
           padding: 10px;
@@ -275,7 +272,7 @@ export const FromComponent = styled.div`
           height: 10px;
           transform: rotate(-5deg);
           box-shadow: 0 0 10px 3px
-            ${(props) => (props.checkDarkMode ? "#585858" : "#ebc481")};
+            ${(props) => props.color.bg3};
         }
         100% {
           padding: 10px;
@@ -283,7 +280,7 @@ export const FromComponent = styled.div`
           height: 10px;
           transform: rotate(5deg);
           box-shadow: 0 0 10px 3px
-            ${(props) => (props.checkDarkMode ? "#EECE95" : "#585858")};
+            ${(props) => props.color.text2};
         }
       }
 

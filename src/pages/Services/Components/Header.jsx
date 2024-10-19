@@ -3,11 +3,11 @@ import { HeaderContainer, HeaderElement } from "../utils/styled";
 import {AR, USA} from '../utils/translation'
 import { Typography } from "@mui/material";
 
-const Header = ({ checkDarkMode, checkSaudiFlag, serviceType }) => {
+const Header = ({ checkDarkMode, checkSaudiFlag, serviceType, colors }) => {
 
   return (
     <HeaderContainer>
-      <HeaderElement checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} serviceType={serviceType} >
+      <HeaderElement color={colors} checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} serviceType={serviceType} >
         <header>
           <Typography variant="h2">{checkSaudiFlag ? AR.header : USA.header}</Typography>
         </header>

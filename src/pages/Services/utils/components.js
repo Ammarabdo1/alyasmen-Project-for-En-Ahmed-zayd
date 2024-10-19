@@ -24,6 +24,7 @@ export const ServiceDetails = ({
   checkSaudiFlag,
   serviceType,
   imageNumber,
+  colors
 }) => {
   useEffect(() => {
     AOS.init();
@@ -34,6 +35,7 @@ export const ServiceDetails = ({
       checkSaudiFlag={checkSaudiFlag}
       checkDarkMode={checkDarkMode}
       serviceType={serviceType}
+      color={colors}
     >
       <Grid container className="body-container">
         <Grid

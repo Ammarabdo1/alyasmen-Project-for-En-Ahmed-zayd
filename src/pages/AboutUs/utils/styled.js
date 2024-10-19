@@ -22,13 +22,16 @@ export const HeaderElement = styled.div`
     justify-content: center;
     align-items: center;
     h2 {
+      font-size: 7rem;
       width: fit-content;
-      color: ${(props) => (props.checkDarkMode ? "#eece95" : "#003641")};
-      background: ${(props) => (props.checkDarkMode ? "" : "#EECE95")};
+      color: ${(props) => props.color.text};
+      background: ${(props) =>
+        props.checkDarkMode ? "transparent" : props.color.bg3};
       backdrop-filter: blur(
-        ${(props) => (props.checkDarkMode ? "0px" : "100px")}
+        ${(props) => (props.checkDarkMode ? "5px" : "0px")}
       );
       padding: ${(props) => (props.checkDarkMode ? "0" : "0 10px")};
+      z-index: 2;
 
       ${(props) =>
         props.checkDarkMode && props.checkSaudiFlag
@@ -37,27 +40,26 @@ export const HeaderElement = styled.div`
 
       ${(props) =>
         props.checkDarkMode && props.checkSaudiFlag
-          ? "border-right: 3px solid #eece95"
-          : "border-left: 3px solid #eece95"};
+          ? `border-right: 3px solid ${props.color.text2}`
+          : `border-left: 3px solid ${props.color.text2}`};
 
       ${(props) =>
-        props.checkDarkMode ? "border-bottom: 3px solid #eece95" : "none"};
+        props.checkDarkMode
+          ? `border-bottom: 3px solid ${props.color.text2}`
+          : "none"};
     }
   }
-  &::after {
-    content: "";
-    transition: all 0.4s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    ${(props) =>
-      props.checkDarkMode &&
-      `background-color: #00000058;
-    z-index: -1;`}
-  }
-
+  // &::after {
+  //   content: "";
+  //   transition: all 0.4s ease;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-color: ${(props) => props.color.bg3};
+  //   z-index: 1;
+  // }
   @media (max-width: 1000px) {
     background-size: cover;
     background-position: center;
@@ -67,31 +69,30 @@ export const HeaderElement = styled.div`
         props.checkSaudiFlag
           ? `${props.checkDarkMode && "border-right: 2px solid"}`
           : `${props.checkDarkMode && "border-left: 2px solid"}`};
-      font-size: 2rem;
+      font-size: 4.5rem !important;
       ${(props) =>
         props.checkSaudiFlag
           ? `padding: ${
-              props.checkDarkMode ? "0 10px 1px 0 !important" : "0 3px"
+              props.checkDarkMode
+                ? "0 10px 1px 0 !important"
+                : "0 3px !important"
             }`
           : `padding: ${
-              props.checkDarkMode ? "0 0 1px 10px !important" : "0 3px"
+              props.checkDarkMode
+                ? "0 0 1px 10px !important"
+                : "0 3px !important"
             }`};
-      ${(props) => !props.checkSaudiFlag && `font-size: 1.8rem`};
+      ${(props) => !props.checkSaudiFlag && `font-size: 3.5rem !important`};
     }
   }
 `;
 
 export const AboutContainer = styled.div`
   padding: 100px;
-  background-image: radial-gradient(
-    ${(props) =>
-      props.checkDarkMode
-        ? "circle at center, #bcbcbc, #585858"
-        : "circle at center, white, #eecd95ae"}
-  );
+  background: ${(props) => props.color.bg};
 
   h2 {
-    color: ${(props) => (props.checkDarkMode ? "#EECE95" : "#003641")};
+    color: ${(props) => props.color.text};
     margin-bottom: 30px;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
   }
@@ -101,7 +102,7 @@ export const AboutContainer = styled.div`
   }
 
   h6 {
-    color: ${(props) => (props.checkDarkMode ? "#e5e5e5" : "#585858")};
+    color: ${(props) => props.color.text2};
     width: 80%;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
   }
@@ -167,7 +168,7 @@ export const AboutContainer = styled.div`
   }
 
   @media (max-width: 1000px) {
-    min-height: ${(props) => (props.checkSaudiFlag ? "150vh" : "130vh")};
+    min-height: ${(props) => (props.checkSaudiFlag ? "180vh" : "140vh")};
     padding: 0px;
     width: 100%;
     margin: 0;

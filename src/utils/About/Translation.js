@@ -1,6 +1,6 @@
 export const AR = {
   TITLE: "من نحن ",
-  DIS: `بوابه الديكور للخدمات الهندسيه . فريق متكامل من المهندسين المبدعين يلتزمون بالمعايير الهندسيه 
+  DIS: `الياسمين للأعمال الهندسية والتشطيبات والديكور . فريق متكامل من المهندسين المبدعين يلتزمون بالمعايير الهندسيه 
             الانشائيه والمعماريه والاستخدام الأمثل للخامات بالتالي تحقيق التوازن
              بين الجوده والتكلفه , يلتزم مكتبنا بتزويد عملائنا بحلول تصميم داخلي مميزه مصممه خصيصا لتلبية احتياجاتهم وتفضيلاتهم الخاصة , هدفنا هو حمايه العميل من اي استغلال محتمل او ممارسات هواه. `,
   ST: "تصميم",
@@ -11,7 +11,7 @@ export const AR = {
 
 export const USA = {
   TITLE: "Who We Are",
-  DIS: `Decor Gate for Engineering Services. An integrated team of creative
+  DIS: `Al-Yasmine for engineering, finishing and decoration works. An integrated team of creative
             engineers committed to structural and architectural engineering
             standards and the optimal use of materials, thus achieving a balance
             between quality and cost, Our office is committed to providing our

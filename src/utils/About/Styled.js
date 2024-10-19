@@ -2,21 +2,23 @@ import styled from "styled-components";
 
 export const AboutContainer = styled.div`
   padding: 100px;
-  background: ${(props) => (props.checkDarkMode ? "#E5E5E5" : "white")};
+  background: ${(props) => props.color.bg};
 
   h2 {
-    color: ${(props) => (props.checkDarkMode ? "#EECE95" : "#003641")};
+    color: ${(props) => props.color.text};
     margin-bottom: 30px;
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
   }
 
   .lamp-icon {
     font-size: 2rem;
+    color: ${(props) => props.color.text2};
   }
 
   h6 {
     color: #585858;
     width: 80%;
+    color: ${(props) => props.color.text2};
     font-family: "Open Sans", Tahoma, Arial, Helvetica;
   }
 
@@ -29,23 +31,25 @@ export const AboutContainer = styled.div`
   p {
     border-radius: 10px;
     padding: 1px 5px;
-    background: ${(props) => (props.checkDarkMode ? "white" : "#585858")};
-    color: ${(props) => (props.checkDarkMode ? "#bf9752" : "white")};
+    background: ${(props) => props.color.text};
+    color: ${(props) => props.color.bg};
     margin-right: 10px;
   }
 
   button {
     margin-top: 50px;
-    color: white;
     padding: 7px;
     border: none;
-    box-shadow: 0 0 12px 4px
-      ${(props) => (props.checkDarkMode ? "#5858585f" : "#000000a1")};
-    background: ${(props) => (props.checkDarkMode ? "#bf9752e0" : "#003641")};
+    background: ${(props) => props.color.text2};
+    color: ${(props) => props.color.bg};
+    box-shadow: 0 0 8px 2px ${(props) => props.color.text2};
+    font-size: 1rem;
+    font-weight: 800;
     transition: all 0.3s ease;
     &:hover {
       transform: scale(1.1);
       opacity: 0.8;
+      box-shadow: 0 0 8px 2px ${(props) => props.color.text2};
     }
   }
 

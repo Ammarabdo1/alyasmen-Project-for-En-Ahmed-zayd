@@ -5,6 +5,7 @@ import { Button, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { GiOpenGate } from "react-icons/gi";
 import ChairIcon from "@mui/icons-material/Chair";
+import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 
 import { ScaleLoader } from "react-spinners";
 
@@ -25,7 +26,7 @@ const AppContainer = styled("div", {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  background: "#254367",
+  background: "#e1a140",
   "@media (max-width: 1000px)": {
     "& .loader": {
       width: "60px !important",
@@ -45,11 +46,11 @@ const Container = styled("div", {
 
 const Box = styled("div", {
   position: "relative",
-  height: 70,
-  width: 70,
+  height: 100,
+  width: 80,
   "@media (max-width: 1000px)": {
-    width: 20,
-    height: 30,
+    width: 25,
+    height: 35,
   },
 });
 
@@ -68,7 +69,7 @@ const SharedStyles = {
 
 const FrontBox = styled(animated.div, {
   ...SharedStyles,
-  backgroundColor: "#254367",
+  backgroundColor: "#e1a140",
   border: "none",
 });
 
@@ -83,19 +84,19 @@ const moveGradient = keyframes({
 
 const BackBox = styled(animated.div, {
   ...SharedStyles,
-  backgroundColor: "#254367",
   border: "none",
-  color: "white",
+  color: "#f4e1d2",
   fontSize: "5rem",
   transition: "background-position 1s ease",
-  background: "linear-gradient(to right, #E5E5E5, #254367)",
+  background: "linear-gradient(to right, #E5E5E5, #914110)",
   backgroundSize: "200% 100%",
   animation: "moveGradient 3s ease infinite",
 
   animation: `${moveGradient} 3s ease infinite`, // Apply the keyframes animation
 
-  "& .chair": {
+  "& .flower-icon": {
     fontSize: "4rem",
+    fill: "url(#flowerGradient)",
   },
 
   "& .empty": {
@@ -106,8 +107,8 @@ const BackBox = styled(animated.div, {
 
   "@media(max-width: 1000px)": {
     fontSize: "1.6rem !important",
-    "& .chair": {
-      fontSize: "1.6rem",
+    "& .flower-icon": {
+      fontSize: "1.5rem",
     },
     "& .empty": {
       "& .line-icon": {
@@ -118,20 +119,8 @@ const BackBox = styled(animated.div, {
 });
 
 const items = [
-  "D",
-  "e",
-  "c",
-  "o",
-  "r",
-  <ChairIcon className="chair" />,
-  <div className="empty">
-    <HorizontalRuleIcon className="line-icon" />
-  </div>,
-  "G",
-  "a",
-  "t",
-  "e",
-  <GiOpenGate />,
+  "A", "l", "y", "a", "s", "m", "i", "n", "e",
+  <LocalFloristIcon className="flower-icon" />,
 ];
 
 export default function StartUpLoader(props) {
@@ -178,6 +167,14 @@ export default function StartUpLoader(props) {
         data-aos="zoom-out"
         data-aos-duration="2000"
       >
+        <svg width="0" height="0">
+          <defs>
+            <linearGradient id="flowerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style={{ stopColor: "#af4261", stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: "#f3ec78", stopOpacity: 1 }} />
+            </linearGradient>
+          </defs>
+        </svg>
         <Container>
           {trail.map(({ rotateX }, i) => (
             <Box key={i}>

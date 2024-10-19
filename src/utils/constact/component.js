@@ -45,6 +45,7 @@ const ContactComponent = ({
   noneSelectField,
   onFocusField,
   setOnFocusField,
+  colors,
 }) => {
   //! for name email pass
   const [name, setName] = useState("");
@@ -130,15 +131,30 @@ const ContactComponent = ({
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    setName("");
-    setEmail("");
-    setSend(true);
+    setSend(true); // Set loader to true when the form is submitted
+
+    // Simulate sending process with a timeout
     setTimeout(() => {
       if (RefAudio.current) {
-        RefAudio.current.play();
+        RefAudio.current.load(); // Load the audio before playing
+        RefAudio.current.play().catch((err) => {
+          console.error("Audio play failed", err); // Catch any play errors
+        });
       }
-      setSend(false);
-    }, 3000);
+
+        setStartPositionForm(true);
+        setSelectField(false);
+        setTimeout(() => {
+          setStartPositionForm(false);
+          setNoneSelectField(true);
+        }, 5000);
+
+      setSend(false); // Set loader to false when submission completes
+      setName("");
+      setEmail("");
+      setPhoneNumber("");
+      setMessage("");
+    }, 2000);
   };
 
   const unValidWords = [
@@ -205,6 +221,7 @@ const ContactComponent = ({
         <TextComponent
           checkDarkMode={checkDarkMode}
           checkSaudiFlag={checkSaudiFlag}
+          color={colors}
         >
           <Box width={600} className="text" data-aos="fade-down-left">
             <Typography variant="h6">
@@ -229,6 +246,7 @@ const ContactComponent = ({
           selectField={selectField}
           noneSelectField={noneSelectField}
           startPositionForm={startPositionForm}
+          color={colors}
         >
           <div
             className="FormValidate"
@@ -547,14 +565,7 @@ const ContactComponent = ({
                     !email.includes("@") || //! Email
                     email.includes("@.com") //! Email
                   }
-                  onClick={() => {
-                    setTimeout(() => {
-                      setName("");
-                      setPhoneNumber("");
-                      setEmail("");
-                      setMessage("");
-                    }, 3000);
-                  }}
+                  onClick={handelSubmit}
                   className="submit"
                   variant="contained"
                   color="info"
@@ -562,11 +573,12 @@ const ContactComponent = ({
                 >
                   {send ? (
                     <div className="flex">
-                      Wait.. <ClipLoader color="#3d8b87" size={20} />
+                      Wait.. <ClipLoader color="#3d8b87" size={20} />{" "}
+                      {/* Loader component */}
                     </div>
                   ) : (
                     <div className="flex">
-                      send <SendIcon style={{ marginLeft: "10px" }} />
+                      Send <SendIcon style={{ marginLeft: "10px" }} />
                     </div>
                   )}
                 </Button>

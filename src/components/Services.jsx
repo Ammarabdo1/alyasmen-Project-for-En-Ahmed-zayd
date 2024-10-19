@@ -4,6 +4,8 @@ import { AR, USA } from "../utils/Services/Translelation";
 
 import { Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
 import imgInternal from "../utils/Services/images/Internal.jpg";
 import imgOuter from "../utils/Services/images/out.jpg";
 import imgLandScap from "../utils/Services/images/park.jpeg";
@@ -13,6 +15,8 @@ import imgBuild from "../utils/Services/images/build.jpg";
 import imgLook from "../utils/Services/images/look.jpg";
 import imgContactUs from "../utils/Services/images/ContactUs.jpg";
 
+import { useMediaQuery } from '@mui/material'
+
 import { Typography, Button, Grid } from "@mui/material";
 import { GiArmoredBoomerang } from "react-icons/gi";
 import AOS from 'aos';
@@ -20,6 +24,8 @@ import 'aos/dist/aos.css'; // Import the AOS styles
 const Services = (props) => {
 
   AOS.init()
+
+  const isMobile = useMediaQuery('(max-width: 1000px)');
 
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
@@ -37,6 +43,12 @@ const Services = (props) => {
   const [showVideo, setShowVideo] = useState(false); // Track visibility
   const componentRef = useRef(null);
   const videoRef = useRef(null);
+
+  const theme = useSelector(state=> state.theme)
+  const themeMode = useSelector(state=> state[theme])
+  const [colors, setColors] = useState(themeMode)
+
+  useEffect(()=> setColors(themeMode), [useSelector(state=> state.theme)])
 
   useEffect(() => {
     // Play or pause the video based on its visibility
@@ -73,10 +85,10 @@ const Services = (props) => {
   }, []); // Run once on component mount
 
   return (
-    <ServicesContainer checkDarkMode={props.checkDarkMode}>
+    <ServicesContainer checkDarkMode={props.checkDarkMode} color={colors} >
       <Grid container className="container">
         <Grid md={12} sm={12} className="header">
-          <HeaderText checkDarkMode={props.checkDarkMode} data-aos='zoom-in' data-aos-duration='1300' >
+          <HeaderText color={colors} checkDarkMode={props.checkDarkMode} checkSaudiFlag={props.checkSaudiFlag} data-aos={isMobile ? 'fade-down' : 'zoom-in'} data-aos-duration='1300' >
             <Typography variant="h1" className="main-text">
               {props.checkSaudiFlag ? AR.header : USA.header } <GiArmoredBoomerang className="icon" />
             </Typography>
@@ -89,7 +101,7 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered4(true)}
           onMouseLeave={() => setIsHovered4(false)}
-          data-aos='zoom-in' data-aos-duration='1000' 
+          data-aos={isMobile ? 'fade-left' : 'zoom-in'} data-aos-duration='1000' 
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -98,6 +110,7 @@ const Services = (props) => {
             showVideo={showVideo}
             ref={componentRef}
             img={imgArea}
+            color={colors}
           >
             <div className="front">
               <img src="images/Services/4) area.png" alt="" />
@@ -118,10 +131,11 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered2(true)}
           onMouseLeave={() => setIsHovered2(false)}
-          data-aos='zoom-in' data-aos-duration='1000' 
+          data-aos={isMobile ? 'fade-right' : 'zoom-in'} data-aos-duration='1000' 
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
+            color={colors}
             isHovered={isHovered2}
             checkDarkMode={props.checkDarkMode}
             img={imgOuter}
@@ -144,11 +158,12 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered3(true)}
           onMouseLeave={() => setIsHovered3(false)}
-          data-aos='zoom-in' data-aos-duration='1000' 
+          data-aos={isMobile ? 'fade-left' : 'zoom-in'} data-aos-duration='1000' 
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
             isHovered={isHovered3}
+            color={colors}
             checkDarkMode={props.checkDarkMode}
             img={imgLandScap}
           >
@@ -170,13 +185,14 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          data-aos='zoom-in' data-aos-duration='1000' 
+          data-aos={isMobile ? 'fade-right' : 'zoom-in'} data-aos-duration='1000' 
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
             isHovered={isHovered}
             checkDarkMode={props.checkDarkMode}
             img={imgInternal}
+            color={colors}
           >
             <div className="front">
               <img src="images/Services/1) Internal.png" alt="" />
@@ -196,12 +212,13 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered5(true)}
           onMouseLeave={() => setIsHovered5(false)}
-          data-aos='zoom-in' data-aos-duration='1000' 
+          data-aos={isMobile ? 'fade-left' : 'zoom-in'} data-aos-duration='1000' 
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
             isHovered={isHovered5}
             checkDarkMode={props.checkDarkMode}
+            color={colors}
             img={imgFinish}
           >
             <div className="front">
@@ -222,12 +239,13 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered6(true)}
           onMouseLeave={() => setIsHovered6(false)}
-          data-aos='zoom-in' data-aos-duration='1000' 
+          data-aos={isMobile ? 'fade-right' : 'zoom-in'} data-aos-duration='1000' 
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
             isHovered={isHovered6}
             checkDarkMode={props.checkDarkMode}
+            color={colors}
             img={imgBuild}
           >
             <div className="front">
@@ -247,13 +265,14 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered7(true)}
           onMouseLeave={() => setIsHovered7(false)}
-          data-aos='zoom-in' data-aos-duration='1000' 
+          data-aos={isMobile ? 'fade-left' : 'zoom-in'} data-aos-duration='1000' 
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
             isHovered={isHovered7}
             checkDarkMode={props.checkDarkMode}
             img={imgLook}
+            color={colors}
           >
             <div className="front">
               <img src="images/Services/7) ProjectManager.png" alt="" />{" "}
@@ -272,7 +291,7 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered8(true)}
           onMouseLeave={() => setIsHovered8(false)}
-          data-aos='zoom-in' data-aos-duration='1000' 
+          data-aos={isMobile ? 'fade-up' : 'zoom-in'} data-aos-duration='1000' 
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -280,6 +299,7 @@ const Services = (props) => {
             checkDarkMode={props.checkDarkMode}
             type="contactUs"
             img={imgContactUs}
+            color={colors}
           >
             <div className="front">
               <img src="images/Services/8)contactUs.png" alt="" />{" "}

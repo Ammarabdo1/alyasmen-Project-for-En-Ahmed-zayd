@@ -30,6 +30,7 @@ const Body = (props) => {
     <AboutContainer
       checkSaudiFlag={props.checkSaudiFlag}
       checkDarkMode={props.checkDarkMode}
+      color={props.colors}
     >
       <Grid container>
         <Grid

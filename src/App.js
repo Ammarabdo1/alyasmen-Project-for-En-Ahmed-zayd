@@ -30,11 +30,11 @@ function App() {
   // Initialize checkSaudiFlag with a boolean value based on localStorage
   const [checkSaudiFlag, setCheckSaudiFlag] = useState(() => {
     const savedLanguage = localStorage.getItem('language');
-    return savedLanguage === 'true'; // Convert string to boolean
+    return savedLanguage === 'false'; // Convert string to boolean
   });
 
   //TODO>> check loader
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   const isMobile = useMediaQuery('(max-width: 1000px)')
 
@@ -118,6 +118,7 @@ function App() {
                     checkSaudiFlag={checkSaudiFlag}
                   />
                   <ContactUs
+                    id='contact'
                     checkDarkMode={checkDarkMode}
                     checkSaudiFlag={checkSaudiFlag}
                   />
