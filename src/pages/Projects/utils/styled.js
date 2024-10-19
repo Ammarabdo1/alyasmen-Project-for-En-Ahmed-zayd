@@ -331,7 +331,7 @@ export const BottomImages = styled.div`
 export const GoDownButton = styled.div`
   z-index: 1000 !important;
   position: relative;
-  bottom: -3100px;
+  bottom: -2950px;
   right: 50%;
   margin-right: -10%;
   button {
