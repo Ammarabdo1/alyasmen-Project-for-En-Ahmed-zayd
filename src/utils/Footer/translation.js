@@ -15,8 +15,8 @@ export const AR = {
   ],
   media: "وسائل التواصل",
   contact: "تواصل معنا",
-  email: "company@decorgate.com",
-  copyright:`  © حقوق النشر ${currentYear}. جميع الحقوق محفوظة. `,
+  email: "company@Alyasmine.com",
+  copyright:`  © حقوق النشر ${currentYear}. جميع الحقوق محفوظة. الياسمين `,
 };
 
 export const USA = {
@@ -34,6 +34,6 @@ export const USA = {
   ],
   media: "Social media",
   contact: "Contact Us",
-  email: "company@decorgate.com",
-  copyright:`© Copyright ${currentYear}. All rights reserved. Decor Gate`,
+  email: "company@Alyasmine.com",
+  copyright:`© Copyright ${currentYear}. All rights reserved. alyasmine`,
 };

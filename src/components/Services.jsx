@@ -15,17 +15,16 @@ import imgBuild from "../utils/Services/images/build.jpg";
 import imgLook from "../utils/Services/images/look.jpg";
 import imgContactUs from "../utils/Services/images/ContactUs.jpg";
 
-import { useMediaQuery } from '@mui/material'
+import { useMediaQuery } from "@mui/material";
 
 import { Typography, Button, Grid } from "@mui/material";
 import { GiArmoredBoomerang } from "react-icons/gi";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import the AOS styles
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import the AOS styles
 const Services = (props) => {
+  AOS.init();
 
-  AOS.init()
-
-  const isMobile = useMediaQuery('(max-width: 1000px)');
+  const isMobile = useMediaQuery("(max-width: 1000px)");
 
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
@@ -44,11 +43,11 @@ const Services = (props) => {
   const componentRef = useRef(null);
   const videoRef = useRef(null);
 
-  const theme = useSelector(state=> state.theme)
-  const themeMode = useSelector(state=> state[theme])
-  const [colors, setColors] = useState(themeMode)
+  const theme = useSelector((state) => state.theme);
+  const themeMode = useSelector((state) => state[theme]);
+  const [colors, setColors] = useState(themeMode);
 
-  useEffect(()=> setColors(themeMode), [useSelector(state=> state.theme)])
+  useEffect(() => setColors(themeMode), [useSelector((state) => state.theme)]);
 
   useEffect(() => {
     // Play or pause the video based on its visibility
@@ -85,12 +84,19 @@ const Services = (props) => {
   }, []); // Run once on component mount
 
   return (
-    <ServicesContainer checkDarkMode={props.checkDarkMode} color={colors} >
+    <ServicesContainer checkDarkMode={props.checkDarkMode} color={colors}>
       <Grid container className="container">
         <Grid md={12} sm={12} className="header">
-          <HeaderText color={colors} checkDarkMode={props.checkDarkMode} checkSaudiFlag={props.checkSaudiFlag} data-aos={isMobile ? 'fade-down' : 'zoom-in'} data-aos-duration='1300' >
+          <HeaderText
+            color={colors}
+            checkDarkMode={props.checkDarkMode}
+            checkSaudiFlag={props.checkSaudiFlag}
+            data-aos={isMobile ? "fade-down" : "zoom-in"}
+            data-aos-duration="1300"
+          >
             <Typography variant="h1" className="main-text">
-              {props.checkSaudiFlag ? AR.header : USA.header } <GiArmoredBoomerang className="icon" />
+              {props.checkSaudiFlag ? AR.header : USA.header}{" "}
+              <GiArmoredBoomerang className="icon" />
             </Typography>
           </HeaderText>
         </Grid>
@@ -101,7 +107,8 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered4(true)}
           onMouseLeave={() => setIsHovered4(false)}
-          data-aos={isMobile ? 'fade-left' : 'zoom-in'} data-aos-duration='1000' 
+          data-aos={isMobile ? "fade-left" : "zoom-in"}
+          data-aos-duration="1000"
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -115,12 +122,24 @@ const Services = (props) => {
             <div className="front">
               <img src="images/Services/4) area.png" alt="" />
               <video src="videos/Up3.mp4" ref={videoRef} muted />
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.area : USA.area }</Typography>{" "}
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.area : USA.area}
+              </Typography>{" "}
             </div>
             <div className="back">
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.area : USA.area }</Typography>{" "}
-              <Typography variant="subtitle2">{props.checkSaudiFlag ? AR.area_des : USA.area_des }</Typography>
-              <Link to='services?service=area' ><Button variant="contained">{props.checkSaudiFlag ? AR.btn : USA.btn }</Button></Link>
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.area : USA.area}
+              </Typography>{" "}
+              <Typography variant="subtitle2">
+                {props.checkSaudiFlag ? AR.area_des : USA.area_des}
+              </Typography>
+              <Link to="services?service=area">
+                <Button variant="contained">
+                  {props.checkSaudiFlag ? AR.btn : USA.btn}
+                </Button>
+              </Link>
             </div>
           </Card>
         </Grid>
@@ -131,7 +150,8 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered2(true)}
           onMouseLeave={() => setIsHovered2(false)}
-          data-aos={isMobile ? 'fade-right' : 'zoom-in'} data-aos-duration='1000' 
+          data-aos={isMobile ? "fade-right" : "zoom-in"}
+          data-aos-duration="1000"
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -142,12 +162,22 @@ const Services = (props) => {
           >
             <div className="front">
               <img src="images/Services/2) outer.png" alt="" />
-              <Typography variant="h5">{props.checkSaudiFlag ? AR.outer : USA.outer }</Typography>
+              <Typography variant="h5">
+                {props.checkSaudiFlag ? AR.outer : USA.outer}
+              </Typography>
             </div>
             <div className="back">
-              <Typography variant="h5">{props.checkSaudiFlag ? AR.outer : USA.outer }</Typography>
-              <Typography variant="subtitle2">{props.checkSaudiFlag ? AR.outer_des : USA.outer_des }</Typography>
-              <Link to='services?service=outer' ><Button variant="contained">{props.checkSaudiFlag ? AR.btn : USA.btn }</Button></Link>
+              <Typography variant="h5">
+                {props.checkSaudiFlag ? AR.outer : USA.outer}
+              </Typography>
+              <Typography variant="subtitle2">
+                {props.checkSaudiFlag ? AR.outer_des : USA.outer_des}
+              </Typography>
+              <Link to="services?service=outer">
+                <Button variant="contained">
+                  {props.checkSaudiFlag ? AR.btn : USA.btn}
+                </Button>
+              </Link>
             </div>
           </Card>
         </Grid>
@@ -158,7 +188,8 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered3(true)}
           onMouseLeave={() => setIsHovered3(false)}
-          data-aos={isMobile ? 'fade-left' : 'zoom-in'} data-aos-duration='1000' 
+          data-aos={isMobile ? "fade-left" : "zoom-in"}
+          data-aos-duration="1000"
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -169,12 +200,24 @@ const Services = (props) => {
           >
             <div className="front">
               <img src="images/Services/3) Landscape.png" alt="" />
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.park : USA.park }</Typography>
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.park : USA.park}
+              </Typography>
             </div>
             <div className="back">
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.park : USA.park }</Typography>
-              <Typography variant="subtitle2">{props.checkSaudiFlag ? AR.park_des : USA.park_des }</Typography>
-              <Link to='services?service=landscape' ><Button variant="contained">{props.checkSaudiFlag ? AR.btn : USA.btn }</Button></Link>
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.park : USA.park}
+              </Typography>
+              <Typography variant="subtitle2">
+                {props.checkSaudiFlag ? AR.park_des : USA.park_des}
+              </Typography>
+              <Link to="services?service=landscape">
+                <Button variant="contained">
+                  {props.checkSaudiFlag ? AR.btn : USA.btn}
+                </Button>
+              </Link>
             </div>
           </Card>
         </Grid>
@@ -185,7 +228,8 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          data-aos={isMobile ? 'fade-right' : 'zoom-in'} data-aos-duration='1000' 
+          data-aos={isMobile ? "fade-right" : "zoom-in"}
+          data-aos-duration="1000"
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -196,12 +240,22 @@ const Services = (props) => {
           >
             <div className="front">
               <img src="images/Services/1) Internal.png" alt="" />
-              <Typography variant="h5">{props.checkSaudiFlag ? AR.internal : USA.internal } </Typography>
+              <Typography variant="h5">
+                {props.checkSaudiFlag ? AR.internal : USA.internal}{" "}
+              </Typography>
             </div>
             <div className="back">
-              <Typography variant="h5">{props.checkSaudiFlag ? AR.internal : USA.internal } </Typography>
-              <Typography variant="subtitle2">{props.checkSaudiFlag ? AR.internal_des : USA.internal_des }</Typography>
-              <Link to='services?service=internal' ><Button variant="contained">{props.checkSaudiFlag ? AR.btn : USA.btn }</Button></Link>
+              <Typography variant="h5">
+                {props.checkSaudiFlag ? AR.internal : USA.internal}{" "}
+              </Typography>
+              <Typography variant="subtitle2">
+                {props.checkSaudiFlag ? AR.internal_des : USA.internal_des}
+              </Typography>
+              <Link to="services?service=internal">
+                <Button variant="contained">
+                  {props.checkSaudiFlag ? AR.btn : USA.btn}
+                </Button>
+              </Link>
             </div>
           </Card>
         </Grid>
@@ -212,7 +266,8 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered5(true)}
           onMouseLeave={() => setIsHovered5(false)}
-          data-aos={isMobile ? 'fade-left' : 'zoom-in'} data-aos-duration='1000' 
+          data-aos={isMobile ? "fade-left" : "zoom-in"}
+          data-aos-duration="1000"
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -223,12 +278,24 @@ const Services = (props) => {
           >
             <div className="front">
               <img src="images/Services/5) Demolition.png" alt="" />
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.finish : USA.finish } </Typography>{" "}
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.finish : USA.finish}{" "}
+              </Typography>{" "}
             </div>
             <div className="back">
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.finish : USA.finish } </Typography>{" "}
-              <Typography variant="subtitle2">{props.checkSaudiFlag ? AR.finish_des : USA.finish_des }</Typography>
-              <Link to='services?service=finish' ><Button variant="contained">{props.checkSaudiFlag ? AR.btn : USA.btn }</Button></Link>
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.finish : USA.finish}{" "}
+              </Typography>{" "}
+              <Typography variant="subtitle2">
+                {props.checkSaudiFlag ? AR.finish_des : USA.finish_des}
+              </Typography>
+              <Link to="services?service=finish">
+                <Button variant="contained">
+                  {props.checkSaudiFlag ? AR.btn : USA.btn}
+                </Button>
+              </Link>
             </div>
           </Card>
         </Grid>
@@ -239,7 +306,8 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered6(true)}
           onMouseLeave={() => setIsHovered6(false)}
-          data-aos={isMobile ? 'fade-right' : 'zoom-in'} data-aos-duration='1000' 
+          data-aos={isMobile ? "fade-right" : "zoom-in"}
+          data-aos-duration="1000"
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -250,11 +318,21 @@ const Services = (props) => {
           >
             <div className="front">
               <img src="images/Services/6) build.png" alt="" />{" "}
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.build : USA.build }</Typography>{" "}
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.build : USA.build}
+              </Typography>{" "}
             </div>
             <div className="back">
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.build : USA.build }</Typography>{" "}
-              <Link to='services?service=build' ><Button variant="contained">{props.checkSaudiFlag ? AR.btn : USA.btn }</Button></Link>
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.build : USA.build}
+              </Typography>{" "}
+              <Link to="services?service=build">
+                <Button variant="contained">
+                  {props.checkSaudiFlag ? AR.btn : USA.btn}
+                </Button>
+              </Link>
             </div>
           </Card>
         </Grid>
@@ -265,7 +343,8 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered7(true)}
           onMouseLeave={() => setIsHovered7(false)}
-          data-aos={isMobile ? 'fade-left' : 'zoom-in'} data-aos-duration='1000' 
+          data-aos={isMobile ? "fade-left" : "zoom-in"}
+          data-aos-duration="1000"
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -276,11 +355,21 @@ const Services = (props) => {
           >
             <div className="front">
               <img src="images/Services/7) ProjectManager.png" alt="" />{" "}
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.look : USA.look }</Typography>{" "}
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.look : USA.look}
+              </Typography>{" "}
             </div>
             <div className="back">
-              <Typography variant="h5"> {props.checkSaudiFlag ? AR.look : USA.look }</Typography>{" "}
-              <Link to='services?service=look' ><Button variant="contained">{props.checkSaudiFlag ? AR.btn : USA.btn }</Button></Link>
+              <Typography variant="h5">
+                {" "}
+                {props.checkSaudiFlag ? AR.look : USA.look}
+              </Typography>{" "}
+              <Link to="services?service=look">
+                <Button variant="contained">
+                  {props.checkSaudiFlag ? AR.btn : USA.btn}
+                </Button>
+              </Link>
             </div>
           </Card>
         </Grid>
@@ -291,7 +380,8 @@ const Services = (props) => {
           className="service"
           onMouseEnter={() => setIsHovered8(true)}
           onMouseLeave={() => setIsHovered8(false)}
-          data-aos={isMobile ? 'fade-up' : 'zoom-in'} data-aos-duration='1000' 
+          data-aos={isMobile ? "fade-up" : "zoom-in"}
+          data-aos-duration="1000"
         >
           <Card
             checkSaudiFlag={props.checkSaudiFlag}
@@ -300,15 +390,26 @@ const Services = (props) => {
             type="contactUs"
             img={imgContactUs}
             color={colors}
+            style={{ direction: "ltr" }}
           >
             <div className="front">
               <img src="images/Services/8)contactUs.png" alt="" />{" "}
-              <Typography variant="h5">{props.checkSaudiFlag ? AR.contact : USA.contact }</Typography>{" "}
+              <Typography variant="h5">
+                {props.checkSaudiFlag ? AR.contact : USA.contact}
+              </Typography>{" "}
             </div>
             <div className="back">
-              <Typography variant="h5">{props.checkSaudiFlag ? AR.contact : USA.contact }</Typography>{" "}
-              <Typography variant="subtitle2">{props.checkSaudiFlag ? AR.contact_des : USA.contact_des }</Typography>{" "}
-              <Link to='contact' ><Button variant="contained">{props.checkSaudiFlag ? AR.btn : USA.btn }</Button></Link>
+              <Typography variant="h5">
+                {props.checkSaudiFlag ? AR.contact : USA.contact}
+              </Typography>{" "}
+              <Typography variant="subtitle2">
+                {props.checkSaudiFlag ? AR.contact_des : USA.contact_des}
+              </Typography>{" "}
+              <Link to="contact">
+                <Button variant="contained">
+                  {props.checkSaudiFlag ? AR.btn : USA.btn}
+                </Button>
+              </Link>
             </div>
           </Card>
         </Grid>

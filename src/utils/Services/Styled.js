@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import bgImgD from './images/dark2.jpg'
-import bgImgL from './images/light.jpg'
-import bgImgCD from './images/dark.jpg'
-import bgImgCL from './images/light2.jpg'
+import bgImgD from "./images/dark2.jpg";
+import bgImgL from "./images/light.jpg";
+import bgImgCD from "./images/dark.jpg";
+import bgImgCL from "./images/light2.jpg";
 
 export const ServicesContainer = styled.div`
   min-height: 100vh;
@@ -51,7 +51,7 @@ export const ServicesContainer = styled.div`
   .service {
     margin: 10px;
     width: 100%;
-    height: 250px;
+    height: 300px;
     perspective: 1000px;
     @media (max-width: 1000px) {
       width: 85%;
@@ -139,8 +139,10 @@ export const Card = styled.div`
   .front {
     ${(props) => !props.checkSaudiFlag && "transform: rotate(180deg);"}
     padding: 30px 15px;
-    background: url(${props => props.checkDarkMode ? bgImgD : bgImgL });
-    ${props => props.type == 'contactUs' && `background: url(${props.checkDarkMode ? bgImgCD : bgImgCL} );`}
+    background: url(${(props) => (props.checkDarkMode ? bgImgD : bgImgL)});
+    ${(props) =>
+      props.type == "contactUs" &&
+      `background: url(${props.checkDarkMode ? bgImgCD : bgImgCL} );`}
     background-size: cover;
     &::after {
       content: "";
@@ -150,9 +152,11 @@ export const Card = styled.div`
       z-index: 1;
       width: 100%;
       height: 100%;
-${props => props.checkDarkMode && `background: linear-gradient(to bottom, transparent 100px, ${props.color.border});`}
+      ${(props) =>
+        props.checkDarkMode &&
+        `background: linear-gradient(to bottom, transparent 100px, ${props.color.border});`}
     }
-    
+
     h5 {
       z-index: 2;
       color: ${(props) => props.color.text2};
@@ -186,9 +190,7 @@ ${props => props.checkDarkMode && `background: linear-gradient(to bottom, transp
     }
 
     @media (max-width: 1000px) {
-
-    align-items: start;
-        
+      align-items: start;
 
       h5 {
         width: 73%;
@@ -218,6 +220,7 @@ ${props => props.checkDarkMode && `background: linear-gradient(to bottom, transp
     background-size: cover;
     background-position: center;
     transform: rotateX(180deg); /* The back side is initially flipped */
+      z-index: 3;
 
     &::after {
       content: "";
@@ -225,6 +228,7 @@ ${props => props.checkDarkMode && `background: linear-gradient(to bottom, transp
       top: 0;
       left: 0;
       width: 100%;
+      z-index: -1;
       height: 100%;
       ${(props) =>
         props.checkDarkMode &&
@@ -233,7 +237,6 @@ ${props => props.checkDarkMode && `background: linear-gradient(to bottom, transp
       transparent,
       #000000a1 20%
     );`}
-      z-index: -1;
     }
     h5 {
       color: ${(props) => props.color.text2};
@@ -263,6 +266,7 @@ ${props => props.checkDarkMode && `background: linear-gradient(to bottom, transp
       background: ${(props) => props.color.text2};
       color: ${(props) => props.color.bg};
       box-shadow: 0 0 8px 2px ${(props) => props.color.text2};
+      margin-top: 20px;
     }
 
     @media (max-width: 1000px) {
@@ -272,8 +276,9 @@ ${props => props.checkDarkMode && `background: linear-gradient(to bottom, transp
       }
 
       h6 {
-        font-size: ${(props) => (props.checkSaudiFlag ? "1rem" : "1rem")};
+        font-size: ${(props) => (props.checkSaudiFlag ? "1rem" : ".8rem")};
       }
+F
     }
   }
 `;

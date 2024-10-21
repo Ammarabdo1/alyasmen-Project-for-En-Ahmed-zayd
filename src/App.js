@@ -22,33 +22,37 @@ function App() {
 
   //TODO>> Toggle color of page
   const [checkDarkMode, setCheckDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('colormode');
-    return savedMode === 'true'; // Convert string to boolean
+    const savedMode = localStorage.getItem("colormode");
+    return savedMode === "true"; // Convert string to boolean
   });
 
   //TODO>> Toggle language of page
   // Initialize checkSaudiFlag with a boolean value based on localStorage
   const [checkSaudiFlag, setCheckSaudiFlag] = useState(() => {
-    const savedLanguage = localStorage.getItem('language');
-    return savedLanguage === 'false'; // Convert string to boolean
+    const savedLanguage = localStorage.getItem("language")
+      ? localStorage.getItem("language") === "ar"
+        ? true
+        : false
+      : true;
+    return savedLanguage; // Convert string to boolean
   });
 
   //TODO>> check loader
   const [loader, setLoader] = useState(true);
 
-  const isMobile = useMediaQuery('(max-width: 1000px)')
+  const isMobile = useMediaQuery("(max-width: 1000px)");
 
   useEffect(() => {
-    localStorage.setItem("colormode", checkDarkMode)
-  } ,[checkDarkMode])
+    localStorage.setItem("colormode", checkDarkMode);
+  }, [checkDarkMode]);
 
   useEffect(() => {
-    localStorage.setItem('language', checkSaudiFlag)
-  } ,[checkSaudiFlag])
+    localStorage.setItem("language", checkSaudiFlag ? "ar" : "en");
+  }, [checkSaudiFlag]);
 
   useEffect(() => {
     const closeLoader = setTimeout(() => setLoader(false), 4000);
-    return () => clearTimeout(closeLoader)
+    return () => clearTimeout(closeLoader);
   }, []);
 
   return (
@@ -71,7 +75,10 @@ function App() {
             setCheckClickLink={setCheckClickLink}
           />
 
-          <FixedBottomIcons checkSaudiFlag={checkSaudiFlag} isMobile={isMobile} />
+          <FixedBottomIcons
+            checkSaudiFlag={checkSaudiFlag}
+            isMobile={isMobile}
+          />
 
           <Routes>
             <Route
@@ -118,7 +125,7 @@ function App() {
                     checkSaudiFlag={checkSaudiFlag}
                   />
                   <ContactUs
-                    id='contact'
+                    id="contact"
                     checkDarkMode={checkDarkMode}
                     checkSaudiFlag={checkSaudiFlag}
                   />
@@ -173,7 +180,10 @@ function App() {
             checkClickLink={checkClickLink}
             setCheckClickLink={setCheckClickLink}
           />
-          <FixedBottomIcons checkSaudiFlag={checkSaudiFlag} isMobile={isMobile} />
+          <FixedBottomIcons
+            checkSaudiFlag={checkSaudiFlag}
+            isMobile={isMobile}
+          />
           <Routes>
             <Route
               path="/"

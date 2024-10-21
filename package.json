@@ -1,7 +1,6 @@
 {
   "name": "alyasmen",
   "version": "0.1.0",
-  "homepage": "https:Ammarabod1.github.io/ahmedzayed",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -12,6 +11,9 @@
     "@react-spring/web": "^9.7.4",
     "@redux-devtools/core": "^4.0.0",
     "@stitches/react": "^1.2.8",
+    "@testing-library/jest-dom": "^6.6.2",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
     "aos": "^2.3.4",
     "framer-motion": "^11.9.0",
     "react": "^18.3.1",
@@ -25,11 +27,10 @@
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
     "styled-components": "^6.1.13",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.14",
+    "web-vitals": "^4.2.3"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -52,8 +53,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^6.2.0"
   }
 }

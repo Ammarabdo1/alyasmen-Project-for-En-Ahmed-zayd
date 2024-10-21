@@ -97,7 +97,7 @@ export const ElementHeader = styled.div`
     background-position: center;
 
     h2 {
-      font-size: 4rem;
+      font-size: 3.5rem;
       ${(props) => !props.checkSaudiFlag && `font-size: 3rem`}
     }
 

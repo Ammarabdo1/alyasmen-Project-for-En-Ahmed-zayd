@@ -17,10 +17,10 @@ export const AR = {
     finish_des:'تتأثر العديد من البنايات بالعوامل الزمنية، حيث تبدأ بعض الشروخ والتصدعات في الظهور مما قد يعرض المبنى للانهيار، وهذا من شأنه الإضرار بسلامة السكان والمباني المجاورة؛ هنا يأتي دورنا الهندسي لمعرفة طرق الإصلاحات اللازم تنفيذها لضمان سلامة المبنى والمحافظة عليه وعلي ساكنيه.',
 
     build:'الاعمال الإنشائية',
-    build_des:'الاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائيةالاعمال الإنشائية',
+    build_des:'',
 
     look:'الإشراف والتنفيذ',
-    look_des:'الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ الإشراف والتنفيذ',
+    look_des:'',
 }
 
 export const USA = {
@@ -42,8 +42,8 @@ export const USA = {
     finish_des:'Many buildings are affected by time factors, as some cracks and fissures begin to appear, which may expose the building to collapse, and this may harm the safety of residents and neighboring buildings; here comes our engineering role to know the methods of repairs that must be implemented to ensure the safety of the building and preserve it and its residents',
 
     build: 'Construction works',
-    build_des:'Construction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction worksConstruction works',
+    build_des:'',
 
     look: 'Supervision',
-    look_des:'Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision Supervision ',
+    look_des:'',
 }

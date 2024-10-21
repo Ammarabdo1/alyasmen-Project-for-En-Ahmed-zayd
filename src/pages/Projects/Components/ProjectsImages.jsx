@@ -206,9 +206,9 @@ export default function ProjectsImages({
                       className="main-img"
                     />
                     <img
-                      src={`images/real-projects/hoverImages/${
-                        checkDarkMode ? "DMBg" : "bgL"
-                      }.jpg`}
+                      src={`images/icons/Logo${
+                        checkDarkMode ? "" : "WM"
+                      }.png`}
                       className="absolute-img"
                     />
                   </div>
@@ -523,9 +523,9 @@ export default function ProjectsImages({
                       className="main-img"
                     />
                     <img
-                      src={`images/real-projects/hoverImages/${
-                        checkDarkMode ? "bgD" : "bgL"
-                      }.jpg`}
+                      src={`images/icons/Logo${
+                        checkDarkMode ? "" : "WM"
+                      }.png`}
                       className="absolute-img"
                     />
                   </div>
