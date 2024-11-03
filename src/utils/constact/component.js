@@ -10,7 +10,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-
+// service_e8o4opn
 import { AR, USA } from "./translation";
 
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
@@ -33,6 +33,8 @@ import EmailIcon from "@mui/icons-material/Email";
 import { ClipLoader } from "react-spinners";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+import emailjs from "@emailjs/browser";
 
 const ContactComponent = ({
   checkDarkMode,
@@ -129,34 +131,6 @@ const ContactComponent = ({
     setAllHabits([habitGym, habitHelp, habitRead, habitRun, habitWrite]);
   }, [habitRun, habitRead, habitWrite, habitGym, habitHelp]);
 
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    setSend(true); // Set loader to true when the form is submitted
-
-    // Simulate sending process with a timeout
-    setTimeout(() => {
-      if (RefAudio.current) {
-        RefAudio.current.load(); // Load the audio before playing
-        RefAudio.current.play().catch((err) => {
-          console.error("Audio play failed", err); // Catch any play errors
-        });
-      }
-
-        setStartPositionForm(true);
-        setSelectField(false);
-        setTimeout(() => {
-          setStartPositionForm(false);
-          setNoneSelectField(true);
-        }, 5000);
-
-      setSend(false); // Set loader to false when submission completes
-      setName("");
-      setEmail("");
-      setPhoneNumber("");
-      setMessage("");
-    }, 2000);
-  };
-
   const unValidWords = [
     "احا",
     "أحا",
@@ -200,6 +174,49 @@ const ContactComponent = ({
   }, [message]);
 
   const isMobile = useMediaQuery("(max-width: 1000px)");
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setSend(true); // Set loader to true when the form is submitted
+
+    // Simulate sending process with a timeout
+    setTimeout(() => {
+      if (RefAudio.current) {
+        RefAudio.current.load(); // Load the audio before playing
+        RefAudio.current.play().catch((err) => {
+          console.error("Audio play failed", err); // Catch any play errors
+        });
+      }
+
+      setStartPositionForm(true);
+      setSelectField(false);
+      setTimeout(() => {
+        setStartPositionForm(false);
+        setNoneSelectField(true);
+      }, 5000);
+
+      setSend(false); // Set loader to false when submission completes
+      setName("");
+      setEmail("");
+      setPhoneNumber("");
+      setMessage("");
+    }, 2000);
+
+    emailjs
+      .sendForm("service_prolveq", "template_9z196ak", form.current, {
+        publicKey: "pZ_Y3jk0tF0sNK-6S",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
 
   return (
     <Grid
@@ -253,7 +270,11 @@ const ContactComponent = ({
             style={{ direction: "ltr", textAlign: "right" }}
             data-aos={!isMobile && "fade-down-right"}
           >
-            <form onSubmit={handelSubmit} className="form">
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="form"
+            >
               <Stack
                 spacing={2}
                 direction="column"
@@ -279,9 +300,9 @@ const ContactComponent = ({
                     }}
                     required
                     className="name-filed"
+                    name='name'
                     value={name}
                     type="text"
-                    variant="outlined"
                     label="Full Name"
                     variant="standard"
                     InputProps={{
@@ -348,10 +369,9 @@ const ContactComponent = ({
                         !message &&
                         setOnFocusField(false);
                     }}
-                    required
                     value={phoneNumber}
+                    // name='phone'
                     type="text"
-                    variant="outlined"
                     className="phone-filed"
                     label="Phone Number"
                     variant="standard"
@@ -429,6 +449,7 @@ const ContactComponent = ({
                   type="email"
                   label="Email Address"
                   value={email}
+                  name='email'
                   required
                   onChange={(e) => setEmail(e.target.value)}
                   color={
@@ -498,10 +519,10 @@ const ContactComponent = ({
                   }}
                   required
                   value={message}
+                  name='message'
                   multiline
                   // maxRows={3}
                   minRows={isMobile ? 2 : 5}
-                  variant="standard"
                   label="Message"
                   variant="outlined"
                   InputProps={{
@@ -565,7 +586,7 @@ const ContactComponent = ({
                     !email.includes("@") || //! Email
                     email.includes("@.com") //! Email
                   }
-                  onClick={handelSubmit}
+                  // onClick={handelSubmit}
                   className="submit"
                   variant="contained"
                   color="info"

@@ -19,7 +19,7 @@ import "aos/dist/aos.css";
 import { useSelector } from "react-redux";
 
 export default function SwiperJs(props) {
-  const decorImages = Array(22).fill(null);
+  const AlyasmenImages = Array(45).fill(null);
   useEffect(() => {
     AOS.init();
   });
@@ -55,7 +55,7 @@ export default function SwiperJs(props) {
         data-aos="fade-up"
         data-aos-duration="1000"
       >
-        {decorImages.map((img, i) => (
+        {AlyasmenImages.map((img, i) => (
             <SwiperSlide>
               <img
                 key={i}

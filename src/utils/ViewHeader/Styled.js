@@ -98,16 +98,16 @@ export const ElementHeader = styled.div`
 
     h2 {
       font-size: 3.5rem;
-      ${(props) => !props.checkSaudiFlag && `font-size: 3rem`}
+      ${(props) => !props.checkSaudiFlag && `font-size: calc(12vw);`}
     }
 
     h3 {
       line-height: 45px;
-      font-size: 1.3rem !important;
+      font-size: calc(6vw);
       margin-top: 3px;
       font-weight: 900;
       backdrop-filter: blur(10px);
-      ${(props) => !props.checkSaudiFlag && `font-size: .85rem !important`}
+      ${(props) => !props.checkSaudiFlag && `font-size: calc(4vw) !important`}
     }
   }
 

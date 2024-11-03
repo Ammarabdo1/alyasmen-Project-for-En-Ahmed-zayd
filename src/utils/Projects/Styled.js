@@ -134,6 +134,9 @@ export const SwiperContainer = styled.div`
       margin: auto;
       height: 350px;
     }
+    .swiper-pagination-bullet {
+      display: none;
+    }
   }
 `;
 
@@ -149,7 +152,7 @@ export const AutoplayContainer = styled.div`
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: ${(props) => props.color.bg};
+    color: ${(props) => props.color.bg2};
   }
 
   .autoplay-progress svg {

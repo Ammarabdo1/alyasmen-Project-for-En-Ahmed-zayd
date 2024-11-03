@@ -25,7 +25,7 @@ const slides = [bgImg, "", bgImg2, "", bgImg3, "", bgImg4, ""];
 
 const mSlides = [mobileBgImg, "", mBgImg2, "", mBgImg3, "", mBgImg4, ""];
 
-const ViewHeader = ({checkDarkMode, checkSaudiFlag}) => {
+const ViewHeader = ({checkDarkMode, checkSaudiFlag, open, setOpen}) => {
   const [showImgHover, setShowImgHover] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
   const [index, set] = useState(0);
@@ -80,7 +80,7 @@ const ViewHeader = ({checkDarkMode, checkSaudiFlag}) => {
     exitBeforeEnter: true,
   });
   return (
-    <HeaderComponent>
+    <HeaderComponent onClick={() => setOpen(false)} >
       <ElementHeader color={colors} checkDarkMode={checkDarkMode} checkSaudiFlag={checkSaudiFlag} >
         <header>
           <Typography variant="h2">

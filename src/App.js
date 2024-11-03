@@ -20,6 +20,9 @@ function App() {
   //TODO>> make a style to home at start up the code
   const [checkClickLink, setCheckClickLink] = useState("Home");
 
+  // responsive navbar
+  const [open, setOpen] = useState(false);
+
   //TODO>> Toggle color of page
   const [checkDarkMode, setCheckDarkMode] = useState(() => {
     const savedMode = localStorage.getItem("colormode");
@@ -73,6 +76,8 @@ function App() {
             setCheckSaudiFlag={setCheckSaudiFlag}
             checkClickLink={checkClickLink}
             setCheckClickLink={setCheckClickLink}
+            open={open}
+            setOpen={setOpen}
           />
 
           <FixedBottomIcons
@@ -89,6 +94,8 @@ function App() {
                     checkDarkMode={checkDarkMode}
                     setCheckDarkMode={setCheckDarkMode}
                     checkSaudiFlag={checkSaudiFlag}
+                    open={open}
+                    setOpen={setOpen}
                   />
                   <ContactUs
                     checkDarkMode={checkDarkMode}
@@ -179,6 +186,8 @@ function App() {
             setCheckSaudiFlag={setCheckSaudiFlag}
             checkClickLink={checkClickLink}
             setCheckClickLink={setCheckClickLink}
+            open={open}
+            setOpen={setOpen}
           />
           <FixedBottomIcons
             checkSaudiFlag={checkSaudiFlag}
@@ -193,6 +202,8 @@ function App() {
                     checkDarkMode={checkDarkMode}
                     setCheckDarkMode={setCheckDarkMode}
                     checkSaudiFlag={checkSaudiFlag}
+                    open={open}
+                    setOpen={setOpen}
                   />
                   <ContactUs
                     checkDarkMode={checkDarkMode}

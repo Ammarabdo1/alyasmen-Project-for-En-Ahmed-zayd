@@ -119,7 +119,7 @@ const BackBox = styled(animated.div, {
 });
 
 const items = [
-  "A", "l", "y", "a", "s", "m", "i", "n", "e",
+  "A", "l", "y", "a", "s", "m", "e", "e", "n",
   <LocalFloristIcon className="flower-icon" />,
 ];
 

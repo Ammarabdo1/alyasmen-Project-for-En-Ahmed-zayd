@@ -5,7 +5,7 @@ export const AR = {
 }
 
 export const USA = {
-    header: 'Alyasmine',
+    header: 'Al-yasmeen',
     title: 'For engineering, finishing and decoration works',
     btn: 'Contact Us',
 }

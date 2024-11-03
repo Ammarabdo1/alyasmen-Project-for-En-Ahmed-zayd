@@ -48,7 +48,7 @@ export default function TemporaryDrawer(props) {
   useEffect(() => {
     AOS.init();
   }, []);
-
+  const {open, setOpen} = props;
   const theme = useSelector((state) => state.theme);
   const themeMode = useSelector((state) => state[theme]);
   const [colors, setColors] = useState(themeMode);
@@ -57,7 +57,6 @@ export default function TemporaryDrawer(props) {
 
   const dispatch = useDispatch();
   //!stats
-  const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -227,7 +226,11 @@ export default function TemporaryDrawer(props) {
         color={colors}
       >
         <Link to="/">
-          <img className="navbar-img" src={`images/icons/Logo${colors.mode === 'dark' ? '' : 'WM'}.png`} alt="Logo" />
+          <img
+            className="navbar-img"
+            src={`images/icons/Logo${colors.mode === "dark" ? "" : "WM"}.png`}
+            alt="Logo"
+          />
         </Link>
 
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -275,14 +278,11 @@ export default function TemporaryDrawer(props) {
               </Link>
               <Link
                 target="_blank"
-                to="https://www.facebook.com/people/Decor-Gate/61565983628977/?mibextid=qi2Omg&rdid=6YlbHMdOiKox9LKj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1222LzdtXPGTAdM5%2F%3Fmibextid%3Dqi2Omg"
+                to="https://www.facebook.com/share/nVgCkbGY7mtkJEJD/"
               >
                 <FaFacebook className="face-icon" />
               </Link>
-              <Link
-                target="_blank"
-                to="https://www.instagram.com/decorgate1?igsh=MW4xMnlqdm9rdmNxeA=="
-              >
+              <Link target="_blank" to="https://www.instagram.com/azaid6481/">
                 <img
                   src="images/icons/instagram.ico"
                   className="instagram-icon"

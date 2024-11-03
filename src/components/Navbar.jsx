@@ -24,7 +24,9 @@ import { MdDarkMode } from "react-icons/md";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 const Navbar = (props) => {
+
   const dispatch = useDispatch();
 
   const theme = useSelector((state) => state.theme); // color mode light or dark
@@ -56,6 +58,8 @@ const Navbar = (props) => {
           setCheckSaudiFlag={props.setCheckSaudiFlag}
           checkDarkMode={props.checkDarkMode}
           setCheckDarkMode={props.setCheckDarkMode}
+          open={props.open}
+          setOpen={props.setOpen}
         />
       ) : (
         <NavbarContainer

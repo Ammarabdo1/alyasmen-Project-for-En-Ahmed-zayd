@@ -116,10 +116,10 @@ const Footer = ({ checkDarkMode, checkSaudiFlag }) => {
               <Link to="https://wa.me/+201112644891">
                 <WhatsAppIcon className="media whats" />
               </Link>
-              <Link to="https://www.instagram.com/decorgate1?igsh=MW4xMnlqdm9rdmNxeA==">
+              <Link to="https://www.instagram.com/azaid6481/">
                 <img src="images/icons/instagram.ico" className="media insta" />
               </Link>
-              <Link to="https://www.facebook.com/people/Decor-Gate/61565983628977/?mibextid=qi2Omg&rdid=6YlbHMdOiKox9LKj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1222LzdtXPGTAdM5%2F%3Fmibextid%3Dqi2Omg">
+              <Link to="https://www.facebook.com/share/nVgCkbGY7mtkJEJD/">
                 <FaFacebook className="media face" />
               </Link>
             </div>

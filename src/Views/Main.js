@@ -17,7 +17,7 @@ const Main = (props) => {
   AOS.init()
   return (
     <div data-aos='fade-down' data-aos-duration='2000'>
-      <ViewHeader checkSaudiFlag={props.checkSaudiFlag} checkDarkMode={props.checkDarkMode} />
+      <ViewHeader checkSaudiFlag={props.checkSaudiFlag} checkDarkMode={props.checkDarkMode} open={props.open} setOpen={props.setOpen} />
       {/* <Media/> */}
       <About checkSaudiFlag={props.checkSaudiFlag} checkDarkMode={props.checkDarkMode} />
       <Projects checkSaudiFlag={props.checkSaudiFlag} checkDarkMode={props.checkDarkMode} />
